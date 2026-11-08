@@ -46,7 +46,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg?v=2026-11-08-10") center / cover;
+  background: url("convite.jpg?v=2026-11-08-11") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel-envelope.webp?v=2026-11-08-10");
+    url("papel-envelope.webp?v=2026-11-08-11");
   background-size: 100% 100%, calc(var(--cw) * .34) calc(var(--cw) * .34);
   background-position: 0 0, 0 0;
 }
@@ -141,12 +141,6 @@ img { display: block; max-width: 100%; }
   background: linear-gradient(180deg, rgba(255,250,244,.32), rgba(225,190,160,.22));
   clip-path: polygon(0 100%, 50% 55%, 100% 100%);
 }
-.env-bolso::after {
-  content: ""; position: absolute; inset: 0;
-  background:
-    linear-gradient(to top right, transparent calc(50% - 1px), rgba(154,117,86,.18) 50%, transparent calc(50% + 1px)) left bottom / 50% 45% no-repeat,
-    linear-gradient(to top left, transparent calc(50% - 1px), rgba(154,117,86,.18) 50%, transparent calc(50% + 1px)) right bottom / 50% 45% no-repeat;
-}
 .env-para {
   position: absolute; left: 0; right: 0; bottom: 13%; z-index: 1; margin: 0; text-align: center;
   font-family: var(--serifa); font-size: calc(var(--cw) * .062); color: var(--bronze);
@@ -166,7 +160,7 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute; inset: 0;
   background:
     linear-gradient(180deg, rgba(150,108,80,.2), rgba(150,108,80,.06) 55%, rgba(255,246,236,.12)),
-    url("papel-envelope.webp?v=2026-11-08-10") 0 0 / calc(var(--cw) * .34) calc(var(--cw) * .34);
+    url("papel-envelope.webp?v=2026-11-08-11") 0 0 / calc(var(--cw) * .34) calc(var(--cw) * .34);
   opacity: 0; transition: opacity 0s .78s;
 }
 .abrindo .env-aba::after { opacity: 1; }
@@ -180,7 +174,7 @@ img { display: block; max-width: 100%; }
   border: 0; padding: 0; cursor: pointer;
   border-radius: 50%;
   /* selo de cera em relevo: aro alto de cera empurrada e marca do carimbo rebaixada */
-  background: url("selo.webp?v=2026-11-08-10") center / contain no-repeat;
+  background: url("selo.webp?v=2026-11-08-11") center / contain no-repeat;
   filter: drop-shadow(0 9px 10px rgba(40,46,34,.38)) drop-shadow(0 2px 2px rgba(40,46,34,.35));
   transition: transform .7s var(--mola), opacity .6s;
 }
@@ -250,7 +244,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp?v=2026-11-08-10") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-08-11") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
