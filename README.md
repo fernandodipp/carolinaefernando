@@ -22,3 +22,8 @@ Edite os três links em `index.html`, dentro de `<nav class="texto t-links">`.
 ## Publicar
 
 No GitHub, abra **Settings → Pages**, escolha **Deploy from a branch**, o branch `main` e a pasta `/ (root)`.
+
+## Depois de cada alteração
+
+Em `index.html`, troque o número de versão nos endereços `assets/style.css?v=...` e `assets/main.js?v=...`.
+Isso obriga os celulares a baixar os arquivos novos em vez de usar a versão guardada no cache.
