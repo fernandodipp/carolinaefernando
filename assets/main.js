@@ -162,30 +162,74 @@
     } catch (e) { /* sem som */ }
   }
 
-  var TOQUE = 930; // momento em que as taças se encontram (ms)
+  /* Corações que sobem quando os noivos se beijam */
+  var tonsCoracao = ["#C9735A", "#E8A48E", "#9A7556", "#F2D7B8", "#D98B74"];
+  function coracoes(x, y, total) {
+    for (var i = 0; i < total; i++) {
+      var c = document.createElement("span");
+      c.className = "coracao-sobe";
+      c.textContent = Math.random() < .75 ? "♥" : "♡";
+      c.style.left = (x + (Math.random() - .5) * 60) + "px";
+      c.style.top = (y + (Math.random() - .5) * 20) + "px";
+      c.style.setProperty("--t", (12 + Math.random() * 16) + "px");
+      c.style.setProperty("--c", tonsCoracao[i % tonsCoracao.length]);
+      c.style.setProperty("--dx", ((Math.random() - .5) * 140) + "px");
+      c.style.setProperty("--dy", (-120 - Math.random() * 160) + "px");
+      c.style.setProperty("--g", ((Math.random() - .5) * 50) + "deg");
+      c.style.setProperty("--d", (1.4 + Math.random() * .9) + "s");
+      c.style.animationDelay = (Math.random() * .35) + "s";
+      document.body.appendChild(c);
+      setTimeout(c.remove.bind(c), 3000);
+    }
+  }
+
+  var camafeu = document.querySelector(".camafeu");
+  var quadros = camafeu ? camafeu.querySelectorAll(".camafeu-fotos img") : [];
+  function mostrarQuadro(n) {
+    Array.prototype.forEach.call(quadros, function (q, i) { q.classList.toggle("ativo", i === n); });
+  }
+
+  var BEIJO = 2500; // duração do beijo, antes do brinde (ms)
+  var TOQUE = 930;  // momento em que as taças se encontram, contado do início do brinde (ms)
   function abrir() {
     if (aberto) return;
     aberto = true;
-    tilintar(TOQUE / 1000);
-    palco.classList.add("brindando");
+    tilintar((BEIJO + TOQUE) / 1000);
+
+    /* 1. O beijo */
+    palco.classList.add("beijando");
+    setTimeout(function () { mostrarQuadro(1); }, 480);
+    setTimeout(function () { mostrarQuadro(2); }, 960);
+    setTimeout(function () {
+      mostrarQuadro(3);
+      var c = centro(camafeu);
+      coracoes(c.x, c.y - c.h * .42, 16);
+      estourar(c.x, c.y - c.h * .2, 36, 1.8, c.w * .6, c.h * .4);
+    }, 1440);
+    setTimeout(function () { palco.classList.add("beijou"); }, BEIJO - 450);
+
+    /* 2. O brinde */
+    setTimeout(function () { palco.classList.add("brindando"); }, BEIJO);
     setTimeout(function () {
       var s = centro(selo);
       estourar(s.x, s.y - s.h * .1, 46, 2.4);
       respingar(s.x, s.y - s.h * .15, 34);
       palco.classList.add("abrindo");
-    }, TOQUE);
-    setTimeout(function () { palco.classList.add("puxando"); }, TOQUE + 1350);
+    }, BEIJO + TOQUE);
+
+    /* 3. O convite */
+    setTimeout(function () { palco.classList.add("puxando"); }, BEIJO + TOQUE + 1350);
     setTimeout(function () {
       cena.style.animation = "none";
       palco.classList.add("revelado");
-    }, TOQUE + 2550);
+    }, BEIJO + TOQUE + 2550);
     setTimeout(function () {
       palco.classList.add("pronto");
       var c = centro(convite);
       estourar(c.x, c.y, 90, 1.6, c.w, c.h);
       var link = document.querySelector(".link-destaque");
       if (link) link.focus({ preventScroll: true });
-    }, TOQUE + 3800);
+    }, BEIJO + TOQUE + 3800);
   }
 
   {

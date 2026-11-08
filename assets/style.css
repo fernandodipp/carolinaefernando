@@ -82,7 +82,7 @@ img { display: block; max-width: 100%; }
 .chamada::before, .chamada::after { content: "✦"; margin: 0 .8em; color: var(--ouro); font-size: .8em; }
 .dica { bottom: max(4.5vh, 22px); animation: piscar 2.6s ease-in-out infinite; }
 @keyframes piscar { 50% { opacity: .35; } }
-.brindando .chamada, .brindando .dica { animation: none; opacity: 0; transform: translateY(8px); pointer-events: none; }
+.beijando .chamada, .beijando .dica, .brindando .chamada, .brindando .dica { animation: none; opacity: 0; transform: translateY(8px); pointer-events: none; }
 
 /* A cena tem o tamanho exato do convite */
 .cena {
@@ -202,6 +202,77 @@ img { display: block; max-width: 100%; }
 .selo:focus-visible { outline: 2px solid var(--bronze); outline-offset: 8px; }
 .abrindo .selo { transform: translate(-50%, -50%) scale(1.5) rotate(20deg); opacity: 0; pointer-events: none; }
 .abrindo .selo::after { animation: none; opacity: 0; }
+
+/* =========================================================
+   Beijo dos noivos: camafeu oval com fotos do ensaio
+   ========================================================= */
+.camafeu {
+  position: absolute; left: 50%; top: 40%; z-index: 9;
+  width: 76%; aspect-ratio: 4 / 5;
+  transform: translate(-50%, -50%) scale(.5);
+  opacity: 0; pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 25%, #FFF8F0, #F6E4D2);
+  box-shadow:
+    0 0 0 1px rgba(154,117,86,.55),
+    0 36px 70px -28px rgba(100,70,45,.7),
+    0 0 60px 10px rgba(255,236,205,.55);
+}
+.camafeu::before {
+  content: ""; position: absolute; inset: 2.6%; border-radius: 50%;
+  border: 1px solid rgba(154,117,86,.75);
+  z-index: 2; pointer-events: none;
+}
+.camafeu-fotos {
+  position: absolute; inset: 5.5%; border-radius: 50%; overflow: hidden;
+  box-shadow: inset 0 0 18px rgba(100,70,45,.35);
+  background: #EAD9C6;
+}
+.camafeu-fotos img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .28s ease;
+  transform: scale(1.02);
+}
+.camafeu-fotos img.ativo { opacity: 1; }
+.camafeu-fotos::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(ellipse at center, transparent 58%, rgba(120,85,55,.28) 100%);
+}
+.camafeu-coracao {
+  position: absolute; left: 50%; z-index: 3;
+  transform: translate(-50%, -50%);
+  padding: 0 .35em; line-height: 1;
+  font-size: calc(var(--cw) * .045); color: var(--bronze);
+  background: #FAEDE1;
+}
+.c-topo { top: 2.6%; }
+.c-base { top: 97.4%; }
+.beijando .camafeu { animation: camafeuEntra .6s var(--mola) forwards; }
+.beijando .camafeu-fotos img { animation: aproximarFoto 2.4s ease-out forwards; }
+.beijou .camafeu { animation: camafeuSai .55s ease-in forwards; }
+@keyframes camafeuEntra {
+  from { opacity: 0; transform: translate(-50%, -42%) scale(.55); filter: blur(8px); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: none; }
+}
+@keyframes camafeuSai {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to   { opacity: 0; transform: translate(-50%, -60%) scale(1.06); filter: blur(4px); }
+}
+@keyframes aproximarFoto { from { transform: scale(1.02); } to { transform: scale(1.14); } }
+.beijou .c-topo { animation: bater .6s ease-in-out; }
+
+/* Corações que sobem no beijo */
+.coracao-sobe {
+  position: fixed; z-index: 21; pointer-events: none;
+  font-size: var(--t); color: var(--c); line-height: 1;
+  animation: sobeCoracao var(--d) cubic-bezier(.25, .6, .4, 1) forwards;
+}
+@keyframes sobeCoracao {
+  0%   { opacity: 0; transform: translate(-50%, 0) scale(.4); }
+  15%  { opacity: 1; }
+  50%  { transform: translate(calc(-50% + var(--dx) * .5), calc(var(--dy) * .5)) scale(1) rotate(calc(var(--g) * .5)); }
+  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), var(--dy)) scale(.9) rotate(var(--g)); }
+}
 
 /* =========================================================
    Brinde de espumante: as taças se tocam sobre o selo
