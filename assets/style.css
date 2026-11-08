@@ -12,8 +12,10 @@
   --papel: #FBECE0;
   --pessego: #F3D9C5;
 
-  --serifa: "Cormorant Garamond", Georgia, serif;
-  --script: "Pinyon Script", cursive;
+  /* Mesmas famílias do site no iCasei: Trajan Pro, Wondershine e Montserrat.
+     Trajan Pro e Wondershine são pagas; usamos as equivalentes gratuitas mais próximas. */
+  --titulo: "Cinzel", "Trajan Pro", Georgia, serif;              /* no lugar da Trajan Pro */
+  --serifa: "Gilda Display", "Wondershine", Georgia, serif;      /* no lugar da Wondershine */
   --sans: "Montserrat", system-ui, sans-serif;
   --mola: cubic-bezier(.2, .8, .2, 1);
 
@@ -142,7 +144,7 @@ img { display: block; max-width: 100%; }
 }
 .env-para {
   position: absolute; left: 0; right: 0; bottom: 13%; z-index: 1; margin: 0; text-align: center;
-  font-family: var(--script); font-size: calc(var(--cw) * .085); color: var(--bronze);
+  font-family: var(--serifa); font-size: calc(var(--cw) * .062); color: var(--bronze);
   text-shadow: 0 1px 0 rgba(255,255,255,.6);
 }
 .env-aba {
@@ -244,13 +246,13 @@ img { display: block; max-width: 100%; }
 
 .t-chamada {
   right: 10.5%; top: 12.5%;
-  font-family: var(--script); font-size: 24px; font-size: 8cqw; line-height: 1.1;
+  font-family: var(--serifa); font-size: 21px; font-size: 6.8cqw; line-height: 1.1;
   color: var(--bronze); text-align: right;
   text-shadow: 0 1px 0 rgba(255,255,255,.7);
 }
 .t-nomes { left: 19%; right: 25%; top: 63.4%; text-align: center; }
 .t-nomes h1 {
-  margin: 0; font-weight: 500;
+  margin: 0; font-family: var(--titulo); font-weight: 500;
   font-size: 11px; font-size: 3.15cqw; letter-spacing: .26em; text-transform: uppercase;
   color: var(--bronze-escuro);
 }
@@ -259,13 +261,13 @@ img { display: block; max-width: 100%; }
   font-family: var(--sans); font-size: 9px; font-size: 2.6cqw; letter-spacing: .5em; padding-left: .5em;
   color: var(--bronze);
 }
-.t-contagem { margin: 1cqw 0 0; font-style: italic; font-size: 11px; font-size: 3.4cqw; color: var(--bronze); min-height: 1.2em; }
+.t-contagem { margin: 1.2cqw 0 0; font-family: var(--serifa); font-size: 11px; font-size: 3.5cqw; color: var(--bronze); min-height: 1.2em; }
 
 .t-links { left: 10%; top: 75%; display: grid; justify-items: start; gap: .6cqw; }
 .link {
   position: relative; display: inline-flex; align-items: center; gap: 1.8cqw;
   padding: .9cqw 0;
-  font-style: italic; font-weight: 500; font-size: 15px; font-size: 4.8cqw; line-height: 1.2;
+  font-family: var(--sans); font-weight: 400; font-size: 12px; font-size: 3.7cqw; line-height: 1.2; letter-spacing: .02em;
   color: var(--bronze-escuro); text-decoration: none;
   background: linear-gradient(currentColor, currentColor) 6.4cqw calc(100% - .6cqw) / 0 1px no-repeat;
   transition: background-size .45s var(--mola), transform .4s var(--mola), color .3s;
@@ -280,7 +282,7 @@ img { display: block; max-width: 100%; }
 
 .link-destaque {
   margin-bottom: 1.4cqw; padding: 1.7cqw 4.4cqw 1.7cqw 3.6cqw;
-  font-size: 4.4cqw; color: #fff;
+  font-size: 3.5cqw; color: #fff;
   border-radius: 99px;
   background: linear-gradient(135deg, #A9825F, var(--bronze) 50%, var(--bronze-escuro));
   box-shadow: 0 1.6cqw 3.4cqw -1.6cqw rgba(122,90,65,.8), inset 0 1px 0 rgba(255,255,255,.25);
