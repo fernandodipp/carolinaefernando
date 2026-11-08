@@ -46,7 +46,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg") center / cover;
+  background: url("convite.jpg?v=2026-11-08-6") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel.jpg");
+    url("papel.jpg?v=2026-11-08-6");
   background-size: 100% 100%, calc(var(--cw) * .9) auto;
   background-position: 0 0, 0 0;
 }
@@ -263,7 +263,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-08-6") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;

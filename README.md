@@ -25,5 +25,6 @@ No GitHub, abra **Settings → Pages**, escolha **Deploy from a branch**, o bran
 
 ## Depois de cada alteração
 
-Em `index.html`, troque o número de versão nos endereços `assets/style.css?v=...` e `assets/main.js?v=...`.
+Troque o número de versão (`?v=...`) em todos os endereços de arquivos:
+em `index.html` (CSS, JavaScript e imagens) e em `assets/style.css` (imagens de fundo).
 Isso obriga os celulares a baixar os arquivos novos em vez de usar a versão guardada no cache.
