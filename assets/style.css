@@ -20,8 +20,10 @@
   --cor-nomes: #BB9C86;        /* nomes: tom do PDF (#C8AD9A), um pouco mais firme */
   --cor-data: #B8927A;         /* data: tom do PDF (#C39D82) */
   --cor-texto: #3A3532;        /* convite e endereço: cinza-escuro do PDF (#333333) */
-  --cor-botao: #B8977F;
-  --cor-botao-escura: #9E7D66;
+  --pampas-claro: #F3D6B8;     /* capim dos pampas da arte (#EABF9A) */
+  --pampas: #EABF9A;
+  --pampas-sombra: #DCAD84;
+  --pampas-texto: #6B4B34;
   --mola: cubic-bezier(.2, .8, .2, 1);
 
   /* Largura do convite: cabe na tela com o envelope em volta */
@@ -46,7 +48,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg?v=2026-11-08-17") center / cover;
+  background: url("convite.jpg?v=2026-11-08-18") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +120,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel-envelope.webp?v=2026-11-08-17");
+    url("papel-envelope.webp?v=2026-11-08-18");
   background-size: 100% 100%, calc(var(--cw) * .2125) calc(var(--cw) * .2125);
   background-position: 0 0, 0 0;
 }
@@ -160,7 +162,7 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute; inset: 0;
   background:
     linear-gradient(180deg, rgba(150,108,80,.2), rgba(150,108,80,.06) 55%, rgba(255,246,236,.12)),
-    url("papel-envelope.webp?v=2026-11-08-17") 0 0 / calc(var(--cw) * .2125) calc(var(--cw) * .2125);
+    url("papel-envelope.webp?v=2026-11-08-18") 0 0 / calc(var(--cw) * .2125) calc(var(--cw) * .2125);
   opacity: 0; transition: opacity 0s .78s;
 }
 .abrindo .env-aba::after { opacity: 1; }
@@ -174,7 +176,7 @@ img { display: block; max-width: 100%; }
   border: 0; padding: 0; cursor: pointer;
   border-radius: 50%;
   /* selo de cera em relevo: aro alto de cera empurrada e marca do carimbo rebaixada */
-  background: url("selo.webp?v=2026-11-08-17") center / contain no-repeat;
+  background: url("selo.webp?v=2026-11-08-18") center / contain no-repeat;
   filter: drop-shadow(0 9px 10px rgba(40,46,34,.38)) drop-shadow(0 2px 2px rgba(40,46,34,.35));
   transition: transform .7s var(--mola), opacity .6s;
 }
@@ -237,7 +239,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp?v=2026-11-08-17") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-08-18") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
@@ -315,18 +317,31 @@ img { display: block; max-width: 100%; }
 .botao {
   position: relative; overflow: hidden; isolation: isolate;
   display: grid; place-items: center;
-  width: 42cqw; height: 6.4cqw;
+  width: 44cqw; height: 6.6cqw;
   border-radius: 99px;
-  background: var(--cor-botao); color: #fff;
+  /* tom do capim dos pampas da arte, em degradê suave */
+  background: linear-gradient(180deg, var(--pampas-claro) 0%, var(--pampas) 55%, var(--pampas-sombra) 100%);
+  color: var(--pampas-texto);
   font-family: var(--sans); font-weight: 500;
-  font-size: 9px; font-size: 2.45cqw; letter-spacing: .16em; text-transform: uppercase;
+  font-size: 9px; font-size: 2.35cqw; letter-spacing: .2em; text-transform: uppercase;
   text-decoration: none; white-space: nowrap;
-  box-shadow: 0 1cqw 2.4cqw -1.2cqw rgba(122,90,65,.65);
-  transition: transform .35s var(--mola), background .3s, box-shadow .3s;
+  text-shadow: 0 1px 0 rgba(255,246,236,.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(176,128,88,.45),          /* filete fino, como borda de papelaria */
+    inset 0 .35cqw .5cqw -.2cqw rgba(255,250,242,.75), /* brilho claro por dentro, no alto */
+    inset 0 -.4cqw .7cqw -.4cqw rgba(160,112,72,.25),
+    0 1cqw 2.2cqw -1.3cqw rgba(122,90,65,.55);
+  transition: transform .35s var(--mola), box-shadow .35s, filter .35s;
+}
+/* segundo filete, recuado, para um acabamento de convite */
+.botao::before {
+  content: ""; position: absolute; inset: .55cqw; border-radius: 99px; z-index: -1;
+  border: 1px solid rgba(255,248,240,.55);
+  pointer-events: none;
 }
 .botao::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(110deg, transparent 32%, rgba(255,255,255,.42) 48%, rgba(255,246,230,.25) 54%, transparent 68%);
+  background: linear-gradient(110deg, transparent 32%, rgba(255,252,246,.6) 48%, rgba(255,244,226,.3) 54%, transparent 68%);
   transform: translateX(-120%);
 }
 .js .pronto .botao::after { animation: brilhoBotao 5.5s ease-in-out 2.6s infinite; }
@@ -337,10 +352,14 @@ img { display: block; max-width: 100%; }
   22%, 100% { transform: translateX(120%); }
 }
 .botao:hover, .botao:focus-visible {
-  background: var(--cor-botao-escura); transform: translateY(-.5cqw); outline: none;
-  box-shadow: 0 1.6cqw 3cqw -1.2cqw rgba(122,90,65,.8);
+  transform: translateY(-.5cqw); outline: none; filter: saturate(1.08) brightness(.98);
+  box-shadow:
+    inset 0 0 0 1px rgba(160,112,72,.6),
+    inset 0 .35cqw .5cqw -.2cqw rgba(255,250,242,.75),
+    inset 0 -.4cqw .7cqw -.4cqw rgba(160,112,72,.3),
+    0 1.6cqw 2.8cqw -1.3cqw rgba(122,90,65,.7);
 }
-.botao:focus-visible { box-shadow: 0 0 0 .5cqw #fff, 0 0 0 1cqw var(--cor-botao-escura); }
+.botao:focus-visible { box-shadow: 0 0 0 .5cqw #fff, 0 0 0 .9cqw var(--pampas-sombra); }
 
 /* =========================================================
    Sem JavaScript ou com pouco movimento: convite já aberto
