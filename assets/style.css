@@ -228,15 +228,37 @@ img { display: block; max-width: 100%; }
   box-shadow: inset 0 0 18px rgba(100,70,45,.35);
   background: #EAD9C6;
 }
-.camafeu-fotos img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-  opacity: 0; transition: opacity .28s ease;
-  transform: scale(1.02);
-}
-.camafeu-fotos img.ativo { opacity: 1; }
+.noivinhos { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Bonequinhos: andam, se inclinam e se beijam */
+.nv-cab-noiva, .nv-cab-noivo, .nv-coracao { transform-box: fill-box; }
+.nv-cab-noiva { transform-origin: 50% 100%; }
+.nv-cab-noivo { transform-origin: 50% 100%; }
+.nv-coracao { transform-origin: 50% 50%; transform: scale(0); }
+.nv-olhos-fechados { opacity: 0; }
+.beijando .nv-noiva-anda { animation: noivaAnda 1s cubic-bezier(.45, 0, .3, 1) .35s forwards; }
+.beijando .nv-noivo-anda { animation: noivoAnda 1s cubic-bezier(.45, 0, .3, 1) .35s forwards; }
+.beijando .nv-pula { animation: pulinho .25s ease-in-out .35s 4 alternate; }
+.beijando .nv-pula-noivo { animation-delay: .47s; }
+.beijando .nv-cab-noiva { animation: inclinaNoiva .4s ease-out 1.25s forwards; }
+.beijando .nv-cab-noivo { animation: inclinaNoivo .4s ease-out 1.25s forwards; }
+.beijando .nv-olhos-abertos { animation: some .05s linear 1.45s forwards; }
+.beijando .nv-olhos-fechados { animation: aparece .05s linear 1.45s forwards; }
+.beijando .nv-coracao { animation: coracaoPop .6s cubic-bezier(.3, 1.7, .5, 1) 1.5s forwards, coracaoBate .8s ease-in-out 2.1s infinite; }
+.beijando .nv-brilhos circle { animation: piscar 1.4s ease-in-out infinite; }
+.nv-brilhos circle:nth-child(2n) { animation-delay: -.7s !important; }
+@keyframes noivaAnda { to { transform: translateX(21px); } }
+@keyframes noivoAnda { to { transform: translateX(-21px); } }
+@keyframes pulinho { to { transform: translateY(-3.5px); } }
+@keyframes inclinaNoiva { to { transform: rotate(12deg); } }
+@keyframes inclinaNoivo { to { transform: rotate(-12deg); } }
+@keyframes some { to { opacity: 0; } }
+@keyframes aparece { to { opacity: 1; } }
+@keyframes coracaoPop { from { transform: scale(0) translateY(6px); } to { transform: scale(1) translateY(0); } }
+@keyframes coracaoBate { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.18); } 60% { transform: scale(.96); } }
 .camafeu-fotos::after {
   content: ""; position: absolute; inset: 0; border-radius: 50%;
-  background: radial-gradient(ellipse at center, transparent 58%, rgba(120,85,55,.28) 100%);
+  background: radial-gradient(ellipse at center, transparent 62%, rgba(120,85,55,.18) 100%);
 }
 .camafeu-coracao {
   position: absolute; left: 50%; z-index: 3;
@@ -248,7 +270,6 @@ img { display: block; max-width: 100%; }
 .c-topo { top: 2.6%; }
 .c-base { top: 97.4%; }
 .beijando .camafeu { animation: camafeuEntra .6s var(--mola) forwards; }
-.beijando .camafeu-fotos img { animation: aproximarFoto 2.4s ease-out forwards; }
 .beijou .camafeu { animation: camafeuSai .55s ease-in forwards; }
 @keyframes camafeuEntra {
   from { opacity: 0; transform: translate(-50%, -42%) scale(.55); filter: blur(8px); }
@@ -258,7 +279,6 @@ img { display: block; max-width: 100%; }
   from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   to   { opacity: 0; transform: translate(-50%, -60%) scale(1.06); filter: blur(4px); }
 }
-@keyframes aproximarFoto { from { transform: scale(1.02); } to { transform: scale(1.14); } }
 .beijou .c-topo { animation: bater .6s ease-in-out; }
 
 /* Corações que sobem no beijo */

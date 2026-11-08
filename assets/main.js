@@ -184,10 +184,6 @@
   }
 
   var camafeu = document.querySelector(".camafeu");
-  var quadros = camafeu ? camafeu.querySelectorAll(".camafeu-fotos img") : [];
-  function mostrarQuadro(n) {
-    Array.prototype.forEach.call(quadros, function (q, i) { q.classList.toggle("ativo", i === n); });
-  }
 
   var BEIJO = 2500; // duração do beijo, antes do brinde (ms)
   var TOQUE = 930;  // momento em que as taças se encontram, contado do início do brinde (ms)
@@ -198,14 +194,11 @@
 
     /* 1. O beijo */
     palco.classList.add("beijando");
-    setTimeout(function () { mostrarQuadro(1); }, 480);
-    setTimeout(function () { mostrarQuadro(2); }, 960);
     setTimeout(function () {
-      mostrarQuadro(3);
       var c = centro(camafeu);
       coracoes(c.x, c.y - c.h * .42, 16);
       estourar(c.x, c.y - c.h * .2, 36, 1.8, c.w * .6, c.h * .4);
-    }, 1440);
+    }, 1550);
     setTimeout(function () { palco.classList.add("beijou"); }, BEIJO - 450);
 
     /* 2. O brinde */
