@@ -17,8 +17,9 @@
   --titulo: "Cinzel", "Trajan Pro", Georgia, serif;              /* no lugar da Trajan Pro */
   --serifa: "Gilda Display", "Wondershine", Georgia, serif;      /* no lugar da Wondershine */
   --sans: "Montserrat", system-ui, sans-serif;
-  --assinatura: "Babylonica", "Pinyon Script", cursive;            /* nomes, como no convite em PDF */
-  --tinta-convite: #A9876F;    /* tom do PDF (#C8AD9A), um pouco mais escuro para leitura */
+  --cor-nomes: #BB9C86;        /* nomes: tom do PDF (#C8AD9A), um pouco mais firme */
+  --cor-data: #B8927A;         /* data: tom do PDF (#C39D82) */
+  --cor-texto: #3A3532;        /* convite e endereço: cinza-escuro do PDF (#333333) */
   --cor-botao: #B8977F;
   --cor-botao-escura: #9E7D66;
   --mola: cubic-bezier(.2, .8, .2, 1);
@@ -296,69 +297,47 @@ img { display: block; max-width: 100%; }
 .js .texto { opacity: 0; transform: translateY(14px); filter: blur(5px); transition: opacity 1.2s ease, transform 1.2s var(--mola), filter 1.2s; transition-delay: calc(var(--i) * .45s + .5s); }
 .js .pronto .texto { opacity: 1; transform: none; filter: none; }
 
-/* Textos do convite */
+/* Textos do convite, como na versão final em PDF: todos centralizados */
 .surge { margin: 0; }
 .js .surge { opacity: 0; transform: translateY(12px); filter: blur(4px); transition: opacity 1.1s ease, transform 1.1s var(--mola), filter 1.1s; transition-delay: calc(var(--i) * .3s + .3s); }
 .js .pronto .surge { opacity: 1; transform: none; filter: none; }
 
-/* Nomes por extenso, logo acima do monograma */
-.t-nomes {
-  left: 6%; right: 6%; top: 19.6%;
+.t-nomes, .t-convite, .t-data, .t-endereco, .t-botoes {
+  position: absolute; left: 0; right: 0;
   text-align: center;
-  font-family: var(--assinatura); font-weight: 400;
-  font-size: 30px; font-size: 10.2cqw; line-height: 1.15; letter-spacing: .01em;
-  color: var(--tinta-convite);
 }
-.js .texto.t-nomes { transform: translateY(12px); }
-.js .pronto .texto.t-nomes { transform: none; }
-
-/* Monograma com ramo e coração, desenhado como a pena */
-.t-monograma {
-  position: absolute; left: 50%; top: 27.6%;
-  width: 58%; height: auto;
-  transform: translateX(-48%);
-  pointer-events: none;
+.t-nomes {
+  top: 22.8%;
+  font-family: var(--titulo); font-weight: 400;
+  font-size: 19px; font-size: 5.95cqw; line-height: 1.2; letter-spacing: 0;
+  color: var(--cor-nomes);
 }
-.js .t-monograma {
-  -webkit-mask-image: linear-gradient(100deg, #000 40%, transparent 60%);
-          mask-image: linear-gradient(100deg, #000 40%, transparent 60%);
-  -webkit-mask-size: 300% 100%; mask-size: 300% 100%;
-  -webkit-mask-position: 100% 0; mask-position: 100% 0;
-}
-.js .pronto .t-monograma { animation: desenhar 2.4s ease-in-out .15s forwards; }
-@keyframes desenhar {
-  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
-  to   { -webkit-mask-position: 0 0; mask-position: 0 0; }
-}
-
-.t-coluna {
-  left: 6%; width: 76%; top: 62.4%;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-  color: var(--tinta-convite);
-}
-.js .texto.t-coluna { opacity: 1; transform: none; filter: none; transition: none; }
 .t-convite {
-  font-family: var(--sans); font-style: italic; font-weight: 600;
-  font-size: 8px; font-size: 2.5cqw; line-height: 1.6; letter-spacing: .03em;
+  top: 36.6%; padding-left: .09em;
+  font-family: var(--sans); font-style: italic; font-weight: 400;
+  font-size: 9px; font-size: 2.8cqw; line-height: 1.75; letter-spacing: .09em;
+  color: var(--cor-texto);
 }
 .t-data {
-  margin-top: 2cqw;
+  top: 46.85%;
   font-family: var(--sans); font-style: italic; font-weight: 600;
-  font-size: 10px; font-size: 3cqw; letter-spacing: .03em;
+  font-size: 12px; font-size: 3.72cqw; line-height: 1.3; letter-spacing: 0;
+  color: var(--cor-data);
 }
-.t-arabesco { width: 20cqw; height: 2.7cqw; margin-top: 1.6cqw; overflow: visible; }
 .t-endereco {
-  margin-top: 1.6cqw;
-  font-family: var(--sans); font-weight: 600;
-  font-size: 8px; font-size: 2.4cqw; line-height: 1.55; letter-spacing: .05em;
-  color: inherit; text-decoration: none;
+  top: 54.15%; width: max-content; left: 50%; right: auto; transform: translateX(-50%); padding-left: .09em;
+  font-family: var(--sans); font-style: italic; font-weight: 400;
+  font-size: 9px; font-size: 2.8cqw; line-height: 1.4; letter-spacing: .09em;
+  color: var(--cor-texto); text-decoration: none;
   background: linear-gradient(currentColor, currentColor) 50% 100% / 0 1px no-repeat;
   transition: background-size .4s var(--mola);
 }
+.js .t-endereco.surge { transform: translate(-50%, 12px); }
+.js .pronto .t-endereco.surge { transform: translateX(-50%); }
 .t-endereco:hover, .t-endereco:focus-visible { background-size: 100% 1px; outline: none; }
 
 /* Botões simples, todos iguais, com um brilho discreto que passa de tempos em tempos */
-.t-botoes { margin-top: 4.4cqw; display: grid; gap: 2.6cqw; justify-items: center; }
+.t-botoes { top: 63.6%; display: grid; gap: 2.6cqw; justify-items: center; }
 .botao {
   position: relative; overflow: hidden; isolation: isolate;
   display: grid; place-items: center;
