@@ -36,7 +36,7 @@
       x: Math.random() * W,
       y: inicio ? Math.random() * H : H + 10,
       r: .5 + Math.random() * 1.6,
-      vy: -(.12 + Math.random() * .38),
+      vy: -(.12 + Math.random() * .38) * (poucoMovimento ? .4 : 1),
       fase: Math.random() * Math.PI * 2,
       amp: .2 + Math.random() * .5,
       pisca: .015 + Math.random() * .03,
@@ -99,7 +99,7 @@
       });
     }
   }
-  if (!poucoMovimento) {
+  {
     redimensionar();
     window.addEventListener("resize", redimensionar);
     var qtd = Math.round(Math.min(70, Math.max(28, W * H / 22000)));
@@ -144,9 +144,7 @@
     }, 3700);
   }
 
-  if (poucoMovimento) {
-    palco.classList.add("abrindo", "puxando", "revelado", "pronto");
-  } else {
+  {
     selo.addEventListener("click", abrir);
     cena.addEventListener("click", function (e) { if (!aberto && !e.target.closest(".convite")) abrir(); });
     document.addEventListener("keydown", function (e) {

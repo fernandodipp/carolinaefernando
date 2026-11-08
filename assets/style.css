@@ -303,8 +303,11 @@ html:not(.js) .env, html:not(.js) .selo, html:not(.js) .dica, html:not(.js) .cha
 html:not(.js) .cena { transform: none; }
 html:not(.js) .convite { transform: none; }
 
+/* Pouco movimento: a abertura do envelope continua (ela só acontece com o clique),
+   mas os movimentos contínuos de fundo param. */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .luzes span, .dica, .selo::after, .link-destaque::after { animation: none !important; }
+  .js .palco:not(.abrindo) .cena { animation: none; }
 }
 
 /* Telas baixas e largas (ex.: notebook): dá mais espaço ao convite */
