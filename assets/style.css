@@ -1,0 +1,313 @@
+/* =========================================================
+   Identidade visual
+   ========================================================= */
+:root {
+  --oliva: #4E5A46;
+  --salvia: #A9B5A0;
+  --blush: #F2D7B8;
+  --terracota: #C9735A;
+  --bronze: #9A7556;
+  --bronze-escuro: #7A5A41;
+  --ouro: #D6AF6E;
+  --papel: #FBECE0;
+  --pessego: #F3D9C5;
+
+  --serifa: "Cormorant Garamond", Georgia, serif;
+  --script: "Pinyon Script", cursive;
+  --sans: "Montserrat", system-ui, sans-serif;
+  --mola: cubic-bezier(.2, .8, .2, 1);
+
+  /* Largura do convite: cabe na tela com o envelope em volta */
+  --cw: min(calc((100vw - 40px) / 1.14), calc(84vh * .5628));
+  --cw: min(calc((100vw - 40px) / 1.14), calc(84svh * .5628), 520px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; overflow: hidden;
+  background: var(--papel);
+  color: var(--bronze);
+  font-family: var(--serifa);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+img { display: block; max-width: 100%; }
+
+/* =========================================================
+   Fundo: o próprio convite desfocado + luzes suaves
+   ========================================================= */
+.fundo {
+  position: fixed; inset: -12%;
+  background: url("convite.jpg") center / cover;
+  filter: blur(38px) saturate(1.15) brightness(.97);
+  transform: scale(1.1);
+}
+.fundo::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, rgba(255,250,244,.35) 0%, transparent 45%, rgba(154,117,86,.22) 100%);
+}
+.luzes { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.luzes span {
+  position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,246,232,.55), transparent 62%);
+  animation: vagar 22s ease-in-out infinite alternate;
+}
+.luzes span:nth-child(1) { left: -20vmax; top: -25vmax; }
+.luzes span:nth-child(2) { right: -25vmax; bottom: -30vmax; animation-duration: 28s; animation-delay: -8s; background: radial-gradient(circle, rgba(242,215,184,.5), transparent 62%); }
+.luzes span:nth-child(3) { left: 30%; top: 40%; width: 40vmax; height: 40vmax; animation-duration: 34s; animation-delay: -15s; background: radial-gradient(circle, rgba(214,175,110,.16), transparent 62%); }
+@keyframes vagar {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(12vmax, 8vmax) scale(1.15); }
+}
+.brilhos { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 20; pointer-events: none; }
+
+/* =========================================================
+   Palco
+   ========================================================= */
+.palco {
+  position: fixed; inset: 0; z-index: 5;
+  display: grid; place-items: center;
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+.chamada, .dica {
+  position: absolute; left: 0; right: 0; margin: 0; text-align: center;
+  font-family: var(--sans); font-size: .68rem; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--bronze-escuro);
+  transition: opacity .6s, transform .6s var(--mola);
+}
+.chamada { top: max(4vh, 18px); }
+.chamada::before, .chamada::after { content: "✦"; margin: 0 .8em; color: var(--ouro); font-size: .8em; }
+.dica { bottom: max(4.5vh, 22px); animation: piscar 2.6s ease-in-out infinite; }
+@keyframes piscar { 50% { opacity: .35; } }
+.abrindo .chamada, .abrindo .dica { animation: none; opacity: 0; transform: translateY(8px); pointer-events: none; }
+
+/* A cena tem o tamanho exato do convite */
+.cena {
+  position: relative;
+  width: var(--cw); aspect-ratio: 941 / 1672;
+  perspective: 1600px;
+  transform: scale(var(--s, .8));
+  transition: transform 1.3s var(--mola);
+}
+.js .palco:not(.abrindo) .cena { animation: flutuar 5.5s ease-in-out infinite; }
+@keyframes flutuar {
+  0%, 100% { transform: scale(var(--s, .8)) translateY(0) rotate(0); }
+  50% { transform: scale(var(--s, .8)) translateY(-10px) rotate(-.5deg); }
+}
+.revelado .cena { --s: var(--s-final, 1); }
+
+/* =========================================================
+   Envelope
+   ========================================================= */
+.env {
+  position: absolute; inset: -2.5% -7%;
+  transition: transform 1.1s cubic-bezier(.55, 0, .3, 1), opacity .9s ease;
+}
+.revelado .env { transform: translateY(85vh) rotate(5deg); opacity: 0; }
+.revelado .selo { transform: translate(-50%, 85vh); opacity: 0; }
+
+/* Papel do envelope: textura do próprio convite, ampliada numa área lisa */
+.env-costas, .env-bolso, .env-aba {
+  background-image:
+    var(--tom),
+    url("papel.jpg");
+  background-size: 100% 100%, calc(var(--cw) * .9) auto;
+  background-position: 0 0, 0 0;
+}
+.env-costas {
+  z-index: 1; border-radius: 6px;
+  --tom: linear-gradient(rgba(214,170,140,.32), rgba(214,170,140,.32));
+  box-shadow:
+    0 40px 70px -30px rgba(122,90,65,.6),
+    0 8px 18px -8px rgba(122,90,65,.35),
+    inset 0 0 40px rgba(154,117,86,.25);
+}
+.env-bolso {
+  z-index: 3; border-radius: 6px;
+  --tom: linear-gradient(100deg, rgba(225,190,160,.32), rgba(255,244,234,.05) 50%, rgba(225,190,160,.32));
+  clip-path: polygon(0 0, 50% 47%, 100% 0, 100% 100%, 0 100%);
+}
+/* Dobra inferior com sombra suave */
+.env-bolso::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,247,240,.5), rgba(236,205,180,.35));
+  clip-path: polygon(0 100%, 50% 55%, 100% 100%);
+}
+.env-bolso::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 1px), rgba(154,117,86,.18) 50%, transparent calc(50% + 1px)) left bottom / 50% 45% no-repeat,
+    linear-gradient(to top left, transparent calc(50% - 1px), rgba(154,117,86,.18) 50%, transparent calc(50% + 1px)) right bottom / 50% 45% no-repeat;
+}
+.env-para {
+  position: absolute; left: 0; right: 0; bottom: 13%; z-index: 1; margin: 0; text-align: center;
+  font-family: var(--script); font-size: calc(var(--cw) * .085); color: var(--bronze);
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
+.env-aba {
+  z-index: 4; bottom: auto; height: 50%;
+  --tom: linear-gradient(180deg, rgba(220,180,150,.28), rgba(240,210,186,.4));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-radius: 6px 6px 0 0;
+  transform-origin: 50% 0;
+  filter: drop-shadow(0 4px 6px rgba(122,90,65,.25));
+  transition: transform 1s cubic-bezier(.6, 0, .25, 1) .3s, z-index 0s .8s, filter 1s .3s, opacity .9s;
+}
+/* Forro verde-sálvia, visível quando a aba abre */
+.env-aba::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle, rgba(255,255,255,.32) 1px, transparent 1.6px) 0 0 / 12px 12px,
+    radial-gradient(circle, rgba(255,255,255,.18) 1px, transparent 1.6px) 6px 6px / 12px 12px,
+    linear-gradient(180deg, #B7C1AC, var(--salvia) 70%, #98A58E);
+  opacity: 0; transition: opacity 0s .78s;
+}
+.abrindo .env-aba::after { opacity: 1; }
+.abrindo .env-aba { transform: rotateX(180deg); z-index: 0; filter: brightness(.9) drop-shadow(0 -2px 4px rgba(122,90,65,.2)); }
+
+/* Selo de cera verde-oliva */
+.selo {
+  position: absolute; left: 50%; top: 46.5%; z-index: 5;
+  width: 31%; aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  display: grid; place-items: center;
+  border: 0; padding: 0; cursor: pointer;
+  border-radius: 46% 54% 51% 49% / 53% 46% 54% 47%;
+  background:
+    radial-gradient(circle at 33% 27%, rgba(255,255,255,.3), transparent 36%),
+    radial-gradient(circle at 50% 50%, #637058 0%, var(--oliva) 56%, #39432F 100%);
+  box-shadow:
+    inset 0 0 0 calc(var(--cw) * .012) rgba(0,0,0,.07),
+    inset 0 -6px 14px rgba(0,0,0,.35),
+    inset 0 5px 10px rgba(255,255,255,.16),
+    0 10px 22px rgba(40,46,34,.4);
+  transition: transform .7s var(--mola), opacity .6s;
+}
+.selo::before {
+  content: ""; position: absolute; inset: 12%; border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,.2);
+  box-shadow: 0 1px 0 rgba(255,255,255,.14), inset 0 1px 0 rgba(255,255,255,.1);
+}
+.selo::after {
+  content: ""; position: absolute; inset: -14%; border-radius: 50%;
+  border: 1px solid rgba(214,175,110,.6);
+  animation: onda 2.6s ease-out infinite;
+}
+@keyframes onda { from { transform: scale(.75); opacity: 1; } to { transform: scale(1.25); opacity: 0; } }
+.selo img { width: 64%; filter: brightness(0) invert(1) opacity(.42) drop-shadow(0 1px 0 rgba(0,0,0,.5)); }
+.selo:hover { transform: translate(-50%, -50%) scale(1.06) rotate(-4deg); }
+.selo:focus-visible { outline: 2px solid var(--bronze); outline-offset: 8px; }
+.abrindo .selo { transform: translate(-50%, -50%) scale(1.5) rotate(20deg); opacity: 0; pointer-events: none; }
+.abrindo .selo::after { animation: none; opacity: 0; }
+
+/* =========================================================
+   Convite
+   ========================================================= */
+.convite {
+  position: absolute; inset: 0; z-index: 2;
+  container-type: inline-size;
+  border-radius: 4px; overflow: hidden;
+  background: var(--papel) url("convite.webp") center / cover;
+  box-shadow: 0 2px 6px rgba(122,90,65,.12);
+  transform: translateY(0) scale(.94);
+  transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
+}
+.puxando .convite { transform: translateY(-104%) scale(.94); }
+.revelado .convite {
+  z-index: 6; transform: translateY(0) scale(1);
+  box-shadow: 0 50px 90px -40px rgba(100,70,45,.65), 0 12px 30px -12px rgba(100,70,45,.35);
+}
+.pronto .convite {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .35s ease-out, box-shadow 1s;
+}
+/* Brilho que atravessa o convite uma vez, e reflexo que segue o mouse */
+.convite::before, .convite::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.convite::before {
+  background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.55) 48%, rgba(255,240,215,.35) 52%, transparent 65%);
+  transform: translateX(-120%);
+}
+.pronto .convite::before { animation: varrer 2.2s ease-in-out .2s 1 forwards; }
+@keyframes varrer { to { transform: translateX(120%); } }
+.convite::after {
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.3), transparent 42%);
+  opacity: 0; transition: opacity .4s;
+}
+.pronto .convite:hover::after { opacity: 1; }
+
+/* Textos sobre o convite, posicionados nos espaços livres da arte */
+.convite-conteudo { position: absolute; inset: 0; z-index: 4; }
+.texto { position: absolute; margin: 0; }
+.js .texto { opacity: 0; transform: translateY(14px); filter: blur(5px); transition: opacity 1.2s ease, transform 1.2s var(--mola), filter 1.2s; transition-delay: calc(var(--i) * .45s + .5s); }
+.js .pronto .texto { opacity: 1; transform: none; filter: none; }
+
+.t-chamada {
+  right: 10.5%; top: 12.5%;
+  font-family: var(--script); font-size: 24px; font-size: 8cqw; line-height: 1.1;
+  color: var(--bronze); text-align: right;
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+}
+.t-nomes { left: 19%; right: 25%; top: 63.4%; text-align: center; }
+.t-nomes h1 {
+  margin: 0; font-weight: 500;
+  font-size: 11px; font-size: 3.15cqw; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--bronze-escuro);
+}
+.t-data {
+  margin: .9cqw 0 0;
+  font-family: var(--sans); font-size: 9px; font-size: 2.6cqw; letter-spacing: .5em; padding-left: .5em;
+  color: var(--bronze);
+}
+.t-contagem { margin: 1cqw 0 0; font-style: italic; font-size: 11px; font-size: 3.4cqw; color: var(--bronze); min-height: 1.2em; }
+
+.t-links { left: 10%; top: 75%; display: grid; justify-items: start; gap: .6cqw; }
+.link {
+  position: relative; display: inline-flex; align-items: center; gap: 1.8cqw;
+  padding: .9cqw 0;
+  font-style: italic; font-weight: 500; font-size: 15px; font-size: 4.8cqw; line-height: 1.2;
+  color: var(--bronze-escuro); text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 6.4cqw calc(100% - .6cqw) / 0 1px no-repeat;
+  transition: background-size .45s var(--mola), transform .4s var(--mola), color .3s;
+}
+.link::before {
+  content: "♡"; font-style: normal; font-size: .8em; color: var(--terracota);
+  transition: transform .4s var(--mola);
+}
+.link:hover, .link:focus-visible { background-size: calc(100% - 6.4cqw) 1px; transform: translateX(1.2cqw); outline: none; }
+.link:hover::before, .link:focus-visible::before { content: "♥"; animation: bater .9s ease-in-out infinite; }
+@keyframes bater { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.3); } 50% { transform: scale(.95); } }
+
+.link-destaque {
+  margin-bottom: 1.4cqw; padding: 1.7cqw 4.4cqw 1.7cqw 3.6cqw;
+  font-size: 4.4cqw; color: #fff;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #A9825F, var(--bronze) 50%, var(--bronze-escuro));
+  box-shadow: 0 1.6cqw 3.4cqw -1.6cqw rgba(122,90,65,.8), inset 0 1px 0 rgba(255,255,255,.25);
+  overflow: hidden;
+}
+.link-destaque::before { color: var(--blush); }
+.link-destaque::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%);
+  transform: translateX(-130%);
+  animation: reluzir 4.5s ease-in-out 4s infinite;
+}
+@keyframes reluzir { 0% { transform: translateX(-130%); } 30%, 100% { transform: translateX(130%); } }
+.link-destaque:hover, .link-destaque:focus-visible { background-size: auto; transform: translateX(1.2cqw) scale(1.03); color: #fff; }
+
+/* =========================================================
+   Sem JavaScript ou com pouco movimento: convite já aberto
+   ========================================================= */
+html:not(.js) .env, html:not(.js) .selo, html:not(.js) .dica, html:not(.js) .chamada { display: none; }
+html:not(.js) .cena { transform: none; }
+html:not(.js) .convite { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Telas baixas e largas (ex.: notebook): dá mais espaço ao convite */
+@media (max-height: 560px) {
+  .chamada, .dica { font-size: .6rem; }
+}
