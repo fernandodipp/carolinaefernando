@@ -207,7 +207,7 @@
   }
 
   /* ---------- Faíscas ao clicar nos links ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll(".botao, .t-site, .t-endereco"), function (a) {
+  Array.prototype.forEach.call(document.querySelectorAll(".botao, .t-endereco"), function (a) {
     a.addEventListener("click", function () {
       var c = centro(a);
       estourar(c.x, c.y, 26, 1.8);

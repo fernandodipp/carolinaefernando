@@ -296,79 +296,98 @@ img { display: block; max-width: 100%; }
 .js .texto { opacity: 0; transform: translateY(14px); filter: blur(5px); transition: opacity 1.2s ease, transform 1.2s var(--mola), filter 1.2s; transition-delay: calc(var(--i) * .45s + .5s); }
 .js .pronto .texto { opacity: 1; transform: none; filter: none; }
 
-/* Textos do convite, como no PDF */
+/* Textos do convite */
+.surge { margin: 0; }
+.js .surge { opacity: 0; transform: translateY(12px); filter: blur(4px); transition: opacity 1.1s ease, transform 1.1s var(--mola), filter 1.1s; transition-delay: calc(var(--i) * .3s + .3s); }
+.js .pronto .surge { opacity: 1; transform: none; filter: none; }
+
+/* Nomes por extenso, logo acima do monograma */
+.t-nomes {
+  left: 6%; right: 6%; top: 19.6%;
+  text-align: center;
+  font-family: var(--assinatura); font-weight: 400;
+  font-size: 30px; font-size: 10.2cqw; line-height: 1.15; letter-spacing: .01em;
+  color: var(--tinta-convite);
+}
+.js .texto.t-nomes { transform: translateY(12px); }
+.js .pronto .texto.t-nomes { transform: none; }
+
+/* Monograma com ramo e coração, desenhado como a pena */
+.t-monograma {
+  position: absolute; left: 50%; top: 27.6%;
+  width: 58%; height: auto;
+  transform: translateX(-48%);
+  pointer-events: none;
+}
+.js .t-monograma {
+  -webkit-mask-image: linear-gradient(100deg, #000 40%, transparent 60%);
+          mask-image: linear-gradient(100deg, #000 40%, transparent 60%);
+  -webkit-mask-size: 300% 100%; mask-size: 300% 100%;
+  -webkit-mask-position: 100% 0; mask-position: 100% 0;
+}
+.js .pronto .t-monograma { animation: desenhar 2.4s ease-in-out .15s forwards; }
+@keyframes desenhar {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to   { -webkit-mask-position: 0 0; mask-position: 0 0; }
+}
+
 .t-coluna {
-  left: 7%; width: 74%; top: 61%;
+  left: 6%; width: 76%; top: 62.4%;
   display: flex; flex-direction: column; align-items: center; text-align: center;
   color: var(--tinta-convite);
 }
 .js .texto.t-coluna { opacity: 1; transform: none; filter: none; transition: none; }
-.surge { margin: 0; }
-.js .surge { opacity: 0; transform: translateY(12px); filter: blur(4px); transition: opacity 1.1s ease, transform 1.1s var(--mola), filter 1.1s; transition-delay: calc(var(--i) * .32s + .4s); }
-.js .pronto .surge { opacity: 1; transform: none; filter: none; }
-
-.t-nomes {
-  font-family: var(--assinatura); font-weight: 400;
-  font-size: 26px; font-size: 8.4cqw; line-height: 1.1; letter-spacing: .01em;
-  color: var(--tinta-convite);
-}
 .t-convite {
-  margin-top: 1.4cqw;
   font-family: var(--sans); font-style: italic; font-weight: 600;
-  font-size: 8px; font-size: 2.45cqw; line-height: 1.55; letter-spacing: .03em;
+  font-size: 8px; font-size: 2.5cqw; line-height: 1.6; letter-spacing: .03em;
 }
 .t-data {
-  margin-top: 1.6cqw;
+  margin-top: 2cqw;
   font-family: var(--sans); font-style: italic; font-weight: 600;
-  font-size: 9px; font-size: 2.85cqw; letter-spacing: .02em;
+  font-size: 10px; font-size: 3cqw; letter-spacing: .03em;
 }
-.t-arabesco { width: 20cqw; height: 2.7cqw; margin-top: 1.2cqw; overflow: visible; }
+.t-arabesco { width: 20cqw; height: 2.7cqw; margin-top: 1.6cqw; overflow: visible; }
 .t-endereco {
-  margin-top: 1.1cqw;
+  margin-top: 1.6cqw;
   font-family: var(--sans); font-weight: 600;
-  font-size: 8px; font-size: 2.35cqw; line-height: 1.5; letter-spacing: .05em;
+  font-size: 8px; font-size: 2.4cqw; line-height: 1.55; letter-spacing: .05em;
   color: inherit; text-decoration: none;
   background: linear-gradient(currentColor, currentColor) 50% 100% / 0 1px no-repeat;
   transition: background-size .4s var(--mola);
 }
 .t-endereco:hover, .t-endereco:focus-visible { background-size: 100% 1px; outline: none; }
 
-/* Botões: os dois no mesmo estilo, com ícone num círculo à esquerda */
-.t-botoes { margin-top: 3cqw; display: grid; gap: 3.9cqw; justify-items: center; }
+/* Botões simples, todos iguais, com um brilho discreto que passa de tempos em tempos */
+.t-botoes { margin-top: 4.4cqw; display: grid; gap: 2.6cqw; justify-items: center; }
 .botao {
-  position: relative; display: flex; align-items: center;
-  width: 39cqw; height: 6.2cqw; padding-left: 9.6cqw;
-  border-radius: 1.3cqw;
+  position: relative; overflow: hidden; isolation: isolate;
+  display: grid; place-items: center;
+  width: 42cqw; height: 6.4cqw;
+  border-radius: 99px;
   background: var(--cor-botao); color: #fff;
-  font-family: var(--sans); font-weight: 500; font-size: 9px; font-size: 2.6cqw; letter-spacing: .02em;
-  text-decoration: none;
-  box-shadow: 0 1.2cqw 2.6cqw -1.4cqw rgba(122,90,65,.7);
+  font-family: var(--sans); font-weight: 500;
+  font-size: 9px; font-size: 2.45cqw; letter-spacing: .16em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 1cqw 2.4cqw -1.2cqw rgba(122,90,65,.65);
   transition: transform .35s var(--mola), background .3s, box-shadow .3s;
 }
-.botao-icone {
-  position: absolute; left: -1.6cqw; top: 50%;
-  width: 8.8cqw; height: 8.8cqw; transform: translateY(-50%);
-  display: grid; place-items: center;
-  border-radius: 50%;
-  background: #fff; color: var(--cor-botao);
-  box-shadow: 0 0 0 1.1cqw var(--cor-botao), 0 1cqw 2.4cqw -1cqw rgba(122,90,65,.6);
-  transition: transform .45s var(--mola);
+.botao::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, transparent 32%, rgba(255,255,255,.42) 48%, rgba(255,246,230,.25) 54%, transparent 68%);
+  transform: translateX(-120%);
 }
-.botao-icone svg { width: 52%; height: 52%; }
-.botao-texto { white-space: nowrap; }
-.botao:hover, .botao:focus-visible { background: var(--cor-botao-escura); transform: translateY(-.6cqw); outline: none; box-shadow: 0 1.8cqw 3cqw -1.4cqw rgba(122,90,65,.8); }
-.botao:hover .botao-icone, .botao:focus-visible .botao-icone { transform: translateY(-50%) rotate(-10deg) scale(1.06); box-shadow: 0 0 0 1.1cqw var(--cor-botao-escura), 0 1cqw 2.4cqw -1cqw rgba(122,90,65,.6); }
+.js .pronto .botao::after { animation: brilhoBotao 5.5s ease-in-out 2.6s infinite; }
+.js .pronto .botao:nth-child(2)::after { animation-delay: 2.95s; }
+.js .pronto .botao:nth-child(3)::after { animation-delay: 3.3s; }
+@keyframes brilhoBotao {
+  0% { transform: translateX(-120%); }
+  22%, 100% { transform: translateX(120%); }
+}
+.botao:hover, .botao:focus-visible {
+  background: var(--cor-botao-escura); transform: translateY(-.5cqw); outline: none;
+  box-shadow: 0 1.6cqw 3cqw -1.2cqw rgba(122,90,65,.8);
+}
 .botao:focus-visible { box-shadow: 0 0 0 .5cqw #fff, 0 0 0 1cqw var(--cor-botao-escura); }
-
-.t-site {
-  margin-top: 2.2cqw;
-  font-family: var(--sans); font-weight: 600;
-  font-size: 9px; font-size: 2.7cqw; letter-spacing: .06em;
-  color: inherit; text-decoration: none;
-  background: linear-gradient(currentColor, currentColor) 50% 100% / 0 1px no-repeat;
-  transition: background-size .4s var(--mola);
-}
-.t-site:hover, .t-site:focus-visible { background-size: 100% 1px; outline: none; }
 
 /* =========================================================
    Sem JavaScript ou com pouco movimento: convite já aberto
@@ -380,7 +399,7 @@ html:not(.js) .convite { transform: none; }
 /* Pouco movimento: a abertura do envelope continua (ela só acontece com o clique),
    mas os movimentos contínuos de fundo param. */
 @media (prefers-reduced-motion: reduce) {
-  .luzes span, .dica, .selo::after { animation: none !important; }
+  .luzes span, .dica, .selo::after, .botao::after { animation: none !important; }
   .js .palco:not(.abrindo) .cena { animation: none; }
 }
 
