@@ -11,7 +11,7 @@ Os links levam ao site principal em [carolinaefernando.com.br](https://www.carol
 | `assets/style.css` | Envelope, convite, cores e animações |
 | `assets/main.js` | Abertura do envelope, brilhos e contagem de dias |
 | `assets/convite.webp` | Arte do convite (também em `convite.jpg`) |
-| `assets/papel-envelope.webp` | Textura de papel linho do envelope, no tom do convite (repete sem emendas) |
+| `assets/papel-envelope.webp` | Textura do envelope, tirada do canto esquerdo do convite, abaixo das folhas (repete sem emendas) |
 | `assets/selo.webp` | Selo de cera em relevo |
 | `assets/monograma.png` | Monograma do selo de cera |
 | `assets/compartilhar.jpg` | Imagem de prévia para WhatsApp e redes sociais |
