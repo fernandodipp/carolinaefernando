@@ -215,8 +215,8 @@ img { display: block; max-width: 100%; }
 }
 .camafeu-fotos { position: absolute; inset: 0; }
 .teatro { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
-.beijando .camafeu { animation: camafeuEntra .6s var(--mola) forwards; }
-.beijou .camafeu { animation: camafeuSai .55s ease-in forwards; }
+.beijando .camafeu { animation: camafeuEntra .75s var(--mola) forwards; }
+.beijou .camafeu { animation: camafeuSai .7s ease-in forwards; }
 @keyframes camafeuEntra {
   from { opacity: 0; transform: translate(-50%, -42%) scale(.55); }
   to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
@@ -237,8 +237,8 @@ img { display: block; max-width: 100%; }
 .tp-vareta-noiva, .tp-vareta-noivo { transform-box: view-box; transform-origin: 0px 0px; }
 .tp-vareta-noiva { transform: rotate(-8.49deg); }
 .tp-vareta-noivo { transform: rotate(-7.65deg); }
-.beijando .tp-vareta-noiva { animation: varetaNoiva .45s ease-out 1.25s forwards; }
-.beijando .tp-vareta-noivo { animation: varetaNoivo .45s ease-out 1.2s forwards; }
+.beijando .tp-vareta-noiva { animation: varetaNoiva .7s ease-out 2s forwards; }
+.beijando .tp-vareta-noivo { animation: varetaNoivo .7s ease-out 1.95s forwards; }
 @keyframes varetaNoiva { to { transform: rotate(-6.44deg) scaleY(1.018); } }
 @keyframes varetaNoivo { to { transform: rotate(.44deg) scaleY(1.135); } }
 .tp-coracao { transform: translateY(180px); }
@@ -246,20 +246,20 @@ img { display: block; max-width: 100%; }
 .tp-luz circle { animation: chama 1.1s ease-in-out infinite alternate; }
 .tp-luz:nth-child(odd) circle { animation-duration: 1.4s; }
 
-.beijando .tp-cortina-esq { animation: cortinaEsq .7s cubic-bezier(.5, 0, .3, 1) .15s forwards; }
-.beijando .tp-cortina-dir { animation: cortinaDir .7s cubic-bezier(.5, 0, .3, 1) .15s forwards; }
-.beijando .tp-noiva-anda { animation: noivaEntra 1.05s cubic-bezier(.4, 0, .35, 1) .35s forwards; }
-.beijando .tp-noivo-anda { animation: noivoEntra 1.05s cubic-bezier(.4, 0, .35, 1) .35s forwards; }
-.beijando .tp-balanca { animation: passo .52s ease-in-out .35s 2; }
-.beijando .tp-balanca-noivo { animation-delay: .43s; }
-.beijando .tp-ponta { animation: pontaPe .3s ease-out 1.35s forwards; }
-.beijando .tp-cab-noiva { animation: cabNoiva .4s ease-out 1.3s forwards; }
-.beijando .tp-cab-noivo { animation: cabNoivo .4s ease-out 1.3s forwards; }
-.beijando .tp-braco-noivo { animation: bracoNoivo .45s ease-out 1.2s forwards; }
-.beijando .tp-braco-noiva { animation: bracoNoiva .45s ease-out 1.25s forwards; }
-.beijando .tp-olho-aberto { animation: some .05s linear 1.5s forwards; }
-.beijando .tp-olho-fechado { animation: aparece .05s linear 1.5s forwards; }
-.beijando .tp-coracao { animation: coracaoVareta .6s cubic-bezier(.3, 1.35, .5, 1) 1.5s forwards, coracaoBalanca 1.2s ease-in-out 2.1s infinite; }
+.beijando .tp-cortina-esq { animation: cortinaEsq 1.15s cubic-bezier(.5, 0, .3, 1) .25s forwards; }
+.beijando .tp-cortina-dir { animation: cortinaDir 1.15s cubic-bezier(.5, 0, .3, 1) .25s forwards; }
+.beijando .tp-noiva-anda { animation: noivaEntra 1.7s cubic-bezier(.4, 0, .35, 1) .55s forwards; }
+.beijando .tp-noivo-anda { animation: noivoEntra 1.7s cubic-bezier(.4, 0, .35, 1) .55s forwards; }
+.beijando .tp-balanca { animation: passo .85s ease-in-out .55s 2; }
+.beijando .tp-balanca-noivo { animation-delay: .68s; }
+.beijando .tp-ponta { animation: pontaPe .5s ease-out 2.2s forwards; }
+.beijando .tp-cab-noiva { animation: cabNoiva .65s ease-out 2.1s forwards; }
+.beijando .tp-cab-noivo { animation: cabNoivo .65s ease-out 2.1s forwards; }
+.beijando .tp-braco-noivo { animation: bracoNoivo .7s ease-out 1.95s forwards; }
+.beijando .tp-braco-noiva { animation: bracoNoiva .7s ease-out 2s forwards; }
+.beijando .tp-olho-aberto { animation: some .05s linear 2.5s forwards; }
+.beijando .tp-olho-fechado { animation: aparece .05s linear 2.5s forwards; }
+.beijando .tp-coracao { animation: coracaoVareta .95s cubic-bezier(.3, 1.35, .5, 1) 2.55s forwards, coracaoBalanca 1.4s ease-in-out 3.5s infinite; }
 
 @keyframes cortinaEsq { to { transform: translateX(-74px); } }
 @keyframes cortinaDir { to { transform: translateX(74px); } }
