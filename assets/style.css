@@ -46,7 +46,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg?v=2026-11-08-6") center / cover;
+  background: url("convite.jpg?v=2026-11-08-7") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel.jpg?v=2026-11-08-6");
+    url("papel.jpg?v=2026-11-08-7");
   background-size: 100% 100%, calc(var(--cw) * .9) auto;
   background-position: 0 0, 0 0;
 }
@@ -176,34 +176,22 @@ img { display: block; max-width: 100%; }
 /* Selo de cera verde-oliva */
 .selo {
   position: absolute; left: 50%; top: 46.5%; z-index: 5;
-  width: 31%; aspect-ratio: 1;
+  width: 37%; aspect-ratio: 440 / 435;
   transform: translate(-50%, -50%);
-  display: grid; place-items: center;
   border: 0; padding: 0; cursor: pointer;
-  border-radius: 46% 54% 51% 49% / 53% 46% 54% 47%;
-  background:
-    radial-gradient(circle at 33% 27%, rgba(255,255,255,.3), transparent 36%),
-    radial-gradient(circle at 50% 50%, #637058 0%, var(--oliva) 56%, #39432F 100%);
-  box-shadow:
-    inset 0 0 0 calc(var(--cw) * .012) rgba(0,0,0,.07),
-    inset 0 -6px 14px rgba(0,0,0,.35),
-    inset 0 5px 10px rgba(255,255,255,.16),
-    0 10px 22px rgba(40,46,34,.4);
+  border-radius: 50%;
+  /* selo de cera em relevo: aro alto de cera empurrada e marca do carimbo rebaixada */
+  background: url("selo.webp?v=2026-11-08-7") center / contain no-repeat;
+  filter: drop-shadow(0 9px 10px rgba(40,46,34,.38)) drop-shadow(0 2px 2px rgba(40,46,34,.35));
   transition: transform .7s var(--mola), opacity .6s;
 }
-.selo::before {
-  content: ""; position: absolute; inset: 12%; border-radius: 50%;
-  border: 1.5px solid rgba(0,0,0,.2);
-  box-shadow: 0 1px 0 rgba(255,255,255,.14), inset 0 1px 0 rgba(255,255,255,.1);
-}
 .selo::after {
-  content: ""; position: absolute; inset: -14%; border-radius: 50%;
+  content: ""; position: absolute; inset: -6%; border-radius: 50%;
   border: 1px solid rgba(214,175,110,.6);
   animation: onda 2.6s ease-out infinite;
 }
 @keyframes onda { from { transform: scale(.75); opacity: 1; } to { transform: scale(1.25); opacity: 0; } }
-.selo img { width: 64%; filter: brightness(0) invert(1) opacity(.42) drop-shadow(0 1px 0 rgba(0,0,0,.5)); }
-.selo:hover { transform: translate(-50%, -50%) scale(1.06) rotate(-4deg); }
+.selo:hover { transform: translate(-50%, -50%) scale(1.05) rotate(-3deg); }
 .selo:focus-visible { outline: 2px solid var(--bronze); outline-offset: 8px; }
 .abrindo .selo { transform: translate(-50%, -50%) scale(1.5) rotate(20deg); opacity: 0; pointer-events: none; }
 .abrindo .selo::after { animation: none; opacity: 0; }
@@ -263,7 +251,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp?v=2026-11-08-6") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-08-7") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
