@@ -17,6 +17,10 @@
   --titulo: "Cinzel", "Trajan Pro", Georgia, serif;              /* no lugar da Trajan Pro */
   --serifa: "Gilda Display", "Wondershine", Georgia, serif;      /* no lugar da Wondershine */
   --sans: "Montserrat", system-ui, sans-serif;
+  --assinatura: "Babylonica", "Pinyon Script", cursive;            /* nomes, como no convite em PDF */
+  --tinta-convite: #A9876F;    /* tom do PDF (#C8AD9A), um pouco mais escuro para leitura */
+  --cor-botao: #B8977F;
+  --cor-botao-escura: #9E7D66;
   --mola: cubic-bezier(.2, .8, .2, 1);
 
   /* Largura do convite: cabe na tela com o envelope em volta */
@@ -82,7 +86,7 @@ img { display: block; max-width: 100%; }
 .chamada::before, .chamada::after { content: "✦"; margin: 0 .8em; color: var(--ouro); font-size: .8em; }
 .dica { bottom: max(4.5vh, 22px); animation: piscar 2.6s ease-in-out infinite; }
 @keyframes piscar { 50% { opacity: .35; } }
-.beijando .chamada, .beijando .dica, .brindando .chamada, .brindando .dica { animation: none; opacity: 0; transform: translateY(8px); pointer-events: none; }
+.brindando .chamada, .brindando .dica { animation: none; opacity: 0; transform: translateY(8px); pointer-events: none; }
 
 /* A cena tem o tamanho exato do convite */
 .cena {
@@ -204,98 +208,6 @@ img { display: block; max-width: 100%; }
 .abrindo .selo::after { animation: none; opacity: 0; }
 
 /* =========================================================
-   Beijo dos noivos: teatro de papel com bonecos de vareta
-   ========================================================= */
-.camafeu {
-  position: absolute; left: 50%; top: 41%; z-index: 9;
-  width: 96%; aspect-ratio: 240 / 260;
-  transform: translate(-50%, -50%) scale(.5);
-  opacity: 0; pointer-events: none;
-  filter: drop-shadow(0 30px 40px rgba(100,70,45,.45));
-}
-.camafeu-fotos { position: absolute; inset: 0; }
-.teatro { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; }
-.beijando .camafeu { animation: camafeuEntra .75s var(--mola) forwards; }
-.beijou .camafeu { animation: camafeuSai .7s ease-in forwards; }
-@keyframes camafeuEntra {
-  from { opacity: 0; transform: translate(-50%, -42%) scale(.55); }
-  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-@keyframes camafeuSai {
-  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  to   { opacity: 0; transform: translate(-50%, -60%) scale(1.05); }
-}
-
-/* Peças articuladas: giram em torno das tachinhas */
-.tp-balanca { transform-box: fill-box; transform-origin: 50% 100%; }
-.tp-cab-noiva { transform-box: view-box; transform-origin: 0px -93px; }
-.tp-braco-noiva { transform-box: view-box; transform-origin: 0px -84px; }
-.tp-cab-noivo { transform-box: view-box; transform-origin: 0px -103px; }
-.tp-braco-noivo { transform-box: view-box; transform-origin: 0px -94px; }
-.tp-olho-fechado { opacity: 0; }
-/* Varetas das mãos: giram pela ponta de baixo e acompanham a mão */
-.tp-vareta-noiva, .tp-vareta-noivo { transform-box: view-box; transform-origin: 0px 0px; }
-.tp-vareta-noiva { transform: rotate(-8.49deg); }
-.tp-vareta-noivo { transform: rotate(-7.65deg); }
-.beijando .tp-vareta-noiva { animation: varetaNoiva .7s ease-out 2s forwards; }
-.beijando .tp-vareta-noivo { animation: varetaNoivo .7s ease-out 1.95s forwards; }
-@keyframes varetaNoiva { to { transform: rotate(-6.44deg) scaleY(1.018); } }
-@keyframes varetaNoivo { to { transform: rotate(.44deg) scaleY(1.135); } }
-.tp-coracao { transform: translateY(180px); }
-.tp-estrela { transform-box: fill-box; transform-origin: 50% 0; animation: pendulo 2.6s ease-in-out infinite; }
-.tp-luz circle { animation: chama 1.1s ease-in-out infinite alternate; }
-.tp-luz:nth-child(odd) circle { animation-duration: 1.4s; }
-
-.beijando .tp-cortina-esq { animation: cortinaEsq 1.15s cubic-bezier(.5, 0, .3, 1) .25s forwards; }
-.beijando .tp-cortina-dir { animation: cortinaDir 1.15s cubic-bezier(.5, 0, .3, 1) .25s forwards; }
-.beijando .tp-noiva-anda { animation: noivaEntra 1.7s cubic-bezier(.4, 0, .35, 1) .55s forwards; }
-.beijando .tp-noivo-anda { animation: noivoEntra 1.7s cubic-bezier(.4, 0, .35, 1) .55s forwards; }
-.beijando .tp-balanca { animation: passo .85s ease-in-out .55s 2; }
-.beijando .tp-balanca-noivo { animation-delay: .68s; }
-.beijando .tp-ponta { animation: pontaPe .5s ease-out 2.2s forwards; }
-.beijando .tp-cab-noiva { animation: cabNoiva .65s ease-out 2.1s forwards; }
-.beijando .tp-cab-noivo { animation: cabNoivo .65s ease-out 2.1s forwards; }
-.beijando .tp-braco-noivo { animation: bracoNoivo .7s ease-out 1.95s forwards; }
-.beijando .tp-braco-noiva { animation: bracoNoiva .7s ease-out 2s forwards; }
-.beijando .tp-olho-aberto { animation: some .05s linear 2.5s forwards; }
-.beijando .tp-olho-fechado { animation: aparece .05s linear 2.5s forwards; }
-.beijando .tp-coracao { animation: coracaoVareta .95s cubic-bezier(.3, 1.35, .5, 1) 2.55s forwards, coracaoBalanca 1.4s ease-in-out 3.5s infinite; }
-
-@keyframes cortinaEsq { to { transform: translateX(-74px); } }
-@keyframes cortinaDir { to { transform: translateX(74px); } }
-@keyframes noivaEntra { to { transform: translateX(79.2px); } }
-@keyframes noivoEntra { to { transform: translateX(-79.2px); } }
-@keyframes passo {
-  0%, 50%, 100% { transform: rotate(0) translateY(0); }
-  25% { transform: rotate(-3deg) translateY(-3px); }
-  75% { transform: rotate(3deg) translateY(-3px); }
-}
-@keyframes pontaPe { to { transform: translateY(-3.6px); } }
-@keyframes cabNoiva { to { transform: rotate(-12deg); } }
-@keyframes cabNoivo { to { transform: rotate(20deg); } }
-@keyframes bracoNoivo { to { transform: rotate(-62deg); } }
-@keyframes bracoNoiva { to { transform: rotate(-14deg); } }
-@keyframes some { to { opacity: 0; } }
-@keyframes aparece { to { opacity: 1; } }
-@keyframes coracaoVareta { from { transform: translateY(180px); } to { transform: translateY(0); } }
-@keyframes coracaoBalanca { 0%, 100% { transform: rotate(0); } 50% { transform: translateY(-2px) rotate(4deg); } }
-@keyframes pendulo { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
-@keyframes chama { from { opacity: .55; } to { opacity: 1; } }
-
-/* Corações que sobem no beijo */
-.coracao-sobe {
-  position: fixed; z-index: 21; pointer-events: none;
-  font-size: var(--t); color: var(--c); line-height: 1;
-  animation: sobeCoracao var(--d) cubic-bezier(.25, .6, .4, 1) forwards;
-}
-@keyframes sobeCoracao {
-  0%   { opacity: 0; transform: translate(-50%, 0) scale(.4); }
-  15%  { opacity: 1; }
-  50%  { transform: translate(calc(-50% + var(--dx) * .5), calc(var(--dy) * .5)) scale(1) rotate(calc(var(--g) * .5)); }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--dx)), var(--dy)) scale(.9) rotate(var(--g)); }
-}
-
-/* =========================================================
    Brinde de espumante: as taças se tocam sobre o selo
    ========================================================= */
 .brinde { position: absolute; inset: 0; z-index: 8; pointer-events: none; }
@@ -384,59 +296,79 @@ img { display: block; max-width: 100%; }
 .js .texto { opacity: 0; transform: translateY(14px); filter: blur(5px); transition: opacity 1.2s ease, transform 1.2s var(--mola), filter 1.2s; transition-delay: calc(var(--i) * .45s + .5s); }
 .js .pronto .texto { opacity: 1; transform: none; filter: none; }
 
-.t-chamada {
-  right: 10.5%; top: 12.5%;
-  font-family: var(--serifa); font-size: 21px; font-size: 6.8cqw; line-height: 1.1;
-  color: var(--bronze); text-align: right;
-  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+/* Textos do convite, como no PDF */
+.t-coluna {
+  left: 7%; width: 74%; top: 61%;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  color: var(--tinta-convite);
 }
-.t-nomes { left: 19%; right: 25%; top: 63.4%; text-align: center; }
-.t-nomes h1 {
-  margin: 0; font-family: var(--titulo); font-weight: 500;
-  font-size: 11px; font-size: 3.15cqw; letter-spacing: .26em; text-transform: uppercase;
-  color: var(--bronze-escuro);
+.js .texto.t-coluna { opacity: 1; transform: none; filter: none; transition: none; }
+.surge { margin: 0; }
+.js .surge { opacity: 0; transform: translateY(12px); filter: blur(4px); transition: opacity 1.1s ease, transform 1.1s var(--mola), filter 1.1s; transition-delay: calc(var(--i) * .32s + .4s); }
+.js .pronto .surge { opacity: 1; transform: none; filter: none; }
+
+.t-nomes {
+  font-family: var(--assinatura); font-weight: 400;
+  font-size: 26px; font-size: 8.4cqw; line-height: 1.1; letter-spacing: .01em;
+  color: var(--tinta-convite);
+}
+.t-convite {
+  margin-top: 1.4cqw;
+  font-family: var(--sans); font-style: italic; font-weight: 600;
+  font-size: 8px; font-size: 2.45cqw; line-height: 1.55; letter-spacing: .03em;
 }
 .t-data {
-  margin: .9cqw 0 0;
-  font-family: var(--sans); font-size: 9px; font-size: 2.6cqw; letter-spacing: .5em; padding-left: .5em;
-  color: var(--bronze);
+  margin-top: 1.6cqw;
+  font-family: var(--sans); font-style: italic; font-weight: 600;
+  font-size: 9px; font-size: 2.85cqw; letter-spacing: .02em;
 }
-.t-contagem { margin: 1.2cqw 0 0; font-family: var(--serifa); font-size: 11px; font-size: 3.5cqw; color: var(--bronze); min-height: 1.2em; }
+.t-arabesco { width: 20cqw; height: 2.7cqw; margin-top: 1.2cqw; overflow: visible; }
+.t-endereco {
+  margin-top: 1.1cqw;
+  font-family: var(--sans); font-weight: 600;
+  font-size: 8px; font-size: 2.35cqw; line-height: 1.5; letter-spacing: .05em;
+  color: inherit; text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 50% 100% / 0 1px no-repeat;
+  transition: background-size .4s var(--mola);
+}
+.t-endereco:hover, .t-endereco:focus-visible { background-size: 100% 1px; outline: none; }
 
-.t-links { left: 10%; top: 75%; display: grid; justify-items: start; gap: .6cqw; }
-.link {
-  position: relative; display: inline-flex; align-items: center; gap: 1.8cqw;
-  padding: .9cqw 0;
-  font-family: var(--sans); font-weight: 400; font-size: 12px; font-size: 3.7cqw; line-height: 1.2; letter-spacing: .02em;
-  color: var(--bronze-escuro); text-decoration: none;
-  background: linear-gradient(currentColor, currentColor) 6.4cqw calc(100% - .6cqw) / 0 1px no-repeat;
-  transition: background-size .45s var(--mola), transform .4s var(--mola), color .3s;
+/* Botões: os dois no mesmo estilo, com ícone num círculo à esquerda */
+.t-botoes { margin-top: 3cqw; display: grid; gap: 3.9cqw; justify-items: center; }
+.botao {
+  position: relative; display: flex; align-items: center;
+  width: 39cqw; height: 6.2cqw; padding-left: 9.6cqw;
+  border-radius: 1.3cqw;
+  background: var(--cor-botao); color: #fff;
+  font-family: var(--sans); font-weight: 500; font-size: 9px; font-size: 2.6cqw; letter-spacing: .02em;
+  text-decoration: none;
+  box-shadow: 0 1.2cqw 2.6cqw -1.4cqw rgba(122,90,65,.7);
+  transition: transform .35s var(--mola), background .3s, box-shadow .3s;
 }
-.link::before {
-  content: "♡"; font-style: normal; font-size: .8em; color: var(--terracota);
-  transition: transform .4s var(--mola);
+.botao-icone {
+  position: absolute; left: -1.6cqw; top: 50%;
+  width: 8.8cqw; height: 8.8cqw; transform: translateY(-50%);
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: #fff; color: var(--cor-botao);
+  box-shadow: 0 0 0 1.1cqw var(--cor-botao), 0 1cqw 2.4cqw -1cqw rgba(122,90,65,.6);
+  transition: transform .45s var(--mola);
 }
-.link:hover, .link:focus-visible { background-size: calc(100% - 6.4cqw) 1px; transform: translateX(1.2cqw); outline: none; }
-.link:hover::before, .link:focus-visible::before { content: "♥"; animation: bater .9s ease-in-out infinite; }
-@keyframes bater { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.3); } 50% { transform: scale(.95); } }
+.botao-icone svg { width: 52%; height: 52%; }
+.botao-texto { white-space: nowrap; }
+.botao:hover, .botao:focus-visible { background: var(--cor-botao-escura); transform: translateY(-.6cqw); outline: none; box-shadow: 0 1.8cqw 3cqw -1.4cqw rgba(122,90,65,.8); }
+.botao:hover .botao-icone, .botao:focus-visible .botao-icone { transform: translateY(-50%) rotate(-10deg) scale(1.06); box-shadow: 0 0 0 1.1cqw var(--cor-botao-escura), 0 1cqw 2.4cqw -1cqw rgba(122,90,65,.6); }
+.botao:focus-visible { box-shadow: 0 0 0 .5cqw #fff, 0 0 0 1cqw var(--cor-botao-escura); }
 
-.link-destaque {
-  margin-bottom: 1.4cqw; padding: 1.7cqw 4.4cqw 1.7cqw 3.6cqw;
-  font-size: 3.5cqw; color: #fff;
-  border-radius: 99px;
-  background: linear-gradient(135deg, #A9825F, var(--bronze) 50%, var(--bronze-escuro));
-  box-shadow: 0 1.6cqw 3.4cqw -1.6cqw rgba(122,90,65,.8), inset 0 1px 0 rgba(255,255,255,.25);
-  overflow: hidden;
+.t-site {
+  margin-top: 2.2cqw;
+  font-family: var(--sans); font-weight: 600;
+  font-size: 9px; font-size: 2.7cqw; letter-spacing: .06em;
+  color: inherit; text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 50% 100% / 0 1px no-repeat;
+  transition: background-size .4s var(--mola);
 }
-.link-destaque::before { color: var(--blush); }
-.link-destaque::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%);
-  transform: translateX(-130%);
-  animation: reluzir 4.5s ease-in-out 4s infinite;
-}
-@keyframes reluzir { 0% { transform: translateX(-130%); } 30%, 100% { transform: translateX(130%); } }
-.link-destaque:hover, .link-destaque:focus-visible { background-size: auto; transform: translateX(1.2cqw) scale(1.03); color: #fff; }
+.t-site:hover, .t-site:focus-visible { background-size: 100% 1px; outline: none; }
 
 /* =========================================================
    Sem JavaScript ou com pouco movimento: convite já aberto
@@ -448,7 +380,7 @@ html:not(.js) .convite { transform: none; }
 /* Pouco movimento: a abertura do envelope continua (ela só acontece com o clique),
    mas os movimentos contínuos de fundo param. */
 @media (prefers-reduced-motion: reduce) {
-  .luzes span, .dica, .selo::after, .link-destaque::after { animation: none !important; }
+  .luzes span, .dica, .selo::after { animation: none !important; }
   .js .palco:not(.abrindo) .cena { animation: none; }
 }
 

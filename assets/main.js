@@ -8,17 +8,6 @@
   var poucoMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var ponteiroFino = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  /* ---------- Contagem de dias ---------- */
-  var alvo = new Date("2027-03-20T16:30:00-03:00").getTime();
-  var dias = Math.ceil((alvo - Date.now()) / 86400000);
-  var contagem = document.querySelector("[data-contagem]");
-  if (contagem) {
-    contagem.textContent =
-      dias > 1 ? "faltam " + dias + " dias" :
-      dias === 1 ? "falta 1 dia!" :
-      dias === 0 ? "é hoje!" : "com amor, para sempre";
-  }
-
   /* ---------- Brilhos discretos voando ---------- */
   var canvas = document.querySelector(".brilhos");
   var ctx = canvas.getContext("2d");
@@ -162,67 +151,34 @@
     } catch (e) { /* sem som */ }
   }
 
-  /* Corações que sobem quando os noivos se beijam */
-  var tonsCoracao = ["#C9735A", "#E8A48E", "#9A7556", "#F2D7B8", "#D98B74"];
-  function coracoes(x, y, total) {
-    for (var i = 0; i < total; i++) {
-      var c = document.createElement("span");
-      c.className = "coracao-sobe";
-      c.textContent = Math.random() < .75 ? "♥" : "♡";
-      c.style.left = (x + (Math.random() - .5) * 60) + "px";
-      c.style.top = (y + (Math.random() - .5) * 20) + "px";
-      c.style.setProperty("--t", (12 + Math.random() * 16) + "px");
-      c.style.setProperty("--c", tonsCoracao[i % tonsCoracao.length]);
-      c.style.setProperty("--dx", ((Math.random() - .5) * 140) + "px");
-      c.style.setProperty("--dy", (-120 - Math.random() * 160) + "px");
-      c.style.setProperty("--g", ((Math.random() - .5) * 50) + "deg");
-      c.style.setProperty("--d", (1.4 + Math.random() * .9) + "s");
-      c.style.animationDelay = (Math.random() * .35) + "s";
-      document.body.appendChild(c);
-      setTimeout(c.remove.bind(c), 3000);
-    }
-  }
-
-  var camafeu = document.querySelector(".camafeu");
-
-  var BEIJO = 4300; // duração do beijo, antes do brinde (ms)
-  var TOQUE = 930;  // momento em que as taças se encontram, contado do início do brinde (ms)
+  var TOQUE = 930;  // momento em que as taças se encontram (ms)
   function abrir() {
     if (aberto) return;
     aberto = true;
-    tilintar((BEIJO + TOQUE) / 1000);
+    tilintar(TOQUE / 1000);
 
-    /* 1. O beijo */
-    palco.classList.add("beijando");
-    setTimeout(function () {
-      var c = centro(camafeu);
-      coracoes(c.x, c.y - c.h * .42, 16);
-      estourar(c.x, c.y - c.h * .2, 36, 1.8, c.w * .6, c.h * .4);
-    }, 2650);
-    setTimeout(function () { palco.classList.add("beijou"); }, BEIJO - 600);
-
-    /* 2. O brinde */
-    setTimeout(function () { palco.classList.add("brindando"); }, BEIJO);
+    /* 1. O brinde */
+    palco.classList.add("brindando");
     setTimeout(function () {
       var s = centro(selo);
       estourar(s.x, s.y - s.h * .1, 46, 2.4);
       respingar(s.x, s.y - s.h * .15, 34);
       palco.classList.add("abrindo");
-    }, BEIJO + TOQUE);
+    }, TOQUE);
 
-    /* 3. O convite */
-    setTimeout(function () { palco.classList.add("puxando"); }, BEIJO + TOQUE + 1350);
+    /* 2. O convite */
+    setTimeout(function () { palco.classList.add("puxando"); }, TOQUE + 1350);
     setTimeout(function () {
       cena.style.animation = "none";
       palco.classList.add("revelado");
-    }, BEIJO + TOQUE + 2550);
+    }, TOQUE + 2550);
     setTimeout(function () {
       palco.classList.add("pronto");
       var c = centro(convite);
       estourar(c.x, c.y, 90, 1.6, c.w, c.h);
-      var link = document.querySelector(".link-destaque");
+      var link = document.querySelector(".botao");
       if (link) link.focus({ preventScroll: true });
-    }, BEIJO + TOQUE + 3800);
+    }, TOQUE + 3800);
   }
 
   {
@@ -251,7 +207,7 @@
   }
 
   /* ---------- Faíscas ao clicar nos links ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll(".link"), function (a) {
+  Array.prototype.forEach.call(document.querySelectorAll(".botao, .t-site, .t-endereco"), function (a) {
     a.addEventListener("click", function () {
       var c = centro(a);
       estourar(c.x, c.y, 26, 1.8);

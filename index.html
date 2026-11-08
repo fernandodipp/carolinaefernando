@@ -14,8 +14,8 @@
   <link rel="preload" as="image" href="assets/convite.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Gilda+Display&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css?v=2026-11-08-2">
+  <link href="https://fonts.googleapis.com/css2?family=Babylonica&family=Cinzel:wght@400;500&family=Gilda+Display&family=Montserrat:ital,wght@0,400;0,500;0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css?v=2026-11-08-3">
   <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
@@ -35,17 +35,24 @@
       <!-- Convite -->
       <article class="convite" aria-label="Convite de casamento de Carolina e Fernando">
         <div class="convite-conteudo">
-          <p class="texto t-chamada" style="--i:0">Vamos nos casar!</p>
-          <div class="texto t-nomes" style="--i:1">
-            <h1>Carolina e Fernando</h1>
-            <p class="t-data">20 . 03 . 2027</p>
-            <p class="t-contagem" data-contagem>&nbsp;</p>
+          <div class="texto t-coluna">
+            <h1 class="surge t-nomes" style="--i:0">Carolina e Fernando</h1>
+            <p class="surge t-convite" style="--i:1">Juntamente com suas famílias convidam<br>para o seu casamento a ser realizado dia</p>
+            <p class="surge t-data" style="--i:2">20/03/2027 às 16:30</p>
+            <svg class="surge t-arabesco" style="--i:2" viewBox="0 0 120 16" aria-hidden="true"><path d="M8 11C4 7 8 2 14 4C30 9 52 12 66 8C70 7 72 4 69 3C66 2 65 6 68 8C80 14 102 12 116 5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <a class="surge t-endereco" style="--i:3" href="https://www.google.com/maps/search/?api=1&amp;query=Beco+dos+Feij%C3%B3s%2C+1140+-+Jardim+Viamar%2C+Viam%C3%A3o+-+RS" target="_blank" rel="noopener">Beco dos Feijós, 1140 - Jardim Viamar<br>Viamão - RS</a>
+            <nav class="surge t-botoes" style="--i:4" aria-label="Links do casamento">
+              <a class="botao" href="https://www.carolinaefernando.com.br/pages/39036805">
+                <span class="botao-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7C10 3 6 3 6 5.5S9.5 7 12 7ZM12 7c2-4 6-4 6-1.5S14.5 7 12 7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+                <span class="botao-texto">Lista de presentes</span>
+              </a>
+              <a class="botao" href="https://www.carolinaefernando.com.br/pages/38839921">
+                <span class="botao-icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="botao-texto">Confirmar presença</span>
+              </a>
+            </nav>
+            <a class="surge t-site" style="--i:5" href="https://www.carolinaefernando.com.br/">carolinaefernando.com.br</a>
           </div>
-          <nav class="texto t-links" style="--i:2" aria-label="Links do casamento">
-            <a class="link link-destaque" href="https://www.carolinaefernando.com.br/pages/38839921">Confirmar presença</a>
-            <a class="link" href="https://www.carolinaefernando.com.br/pages/39036805">Lista de presentes</a>
-            <a class="link" href="https://www.carolinaefernando.com.br/">Nosso site</a>
-          </nav>
         </div>
       </article>
 
@@ -57,149 +64,6 @@
       <button class="selo" type="button" aria-label="Abrir o envelope">
         <img src="assets/monograma.png" alt="">
       </button>
-
-      <!-- Beijo dos noivos, antes do brinde -->
-      <div class="camafeu" aria-hidden="true">
-        <div class="camafeu-fotos">
-          <svg class="teatro" viewBox="0 0 240 260" role="img" aria-label="Teatro de papel: os noivos se aproximam e se beijam">
-            <defs>
-              <clipPath id="tpAbertura"><rect x="18" y="30" width="204" height="184"/></clipPath>
-              <filter id="tpPapel" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx=".7" dy="1.3" stdDeviation=".55" flood-color="#5A3E2A" flood-opacity=".38"/></filter>
-              <filter id="tpGrao"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .22 0 0 0 .6 0"/></filter>
-              <linearGradient id="tpCeu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBE9D8"/><stop offset="1" stop-color="#F5D3BD"/></linearGradient>
-              <linearGradient id="tpDobra" x1="0" y1="0" x2="14" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat"><stop offset="0" stop-color="#B35F48"/><stop offset=".45" stop-color="#CF7A5F"/><stop offset=".7" stop-color="#C9735A"/><stop offset="1" stop-color="#A9553F"/></linearGradient>
-              <linearGradient id="tpVestido" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F3E8DC"/></linearGradient>
-              <radialGradient id="tpBrilho"><stop offset="0" stop-color="#FFE6B0" stop-opacity=".9"/><stop offset="1" stop-color="#FFE6B0" stop-opacity="0"/></radialGradient>
-            </defs>
-
-            <!-- Cenário em camadas de papel -->
-            <rect x="18" y="34" width="204" height="180" fill="url(#tpCeu)"/>
-            <g filter="url(#tpPapel)">
-              <circle cx="158" cy="86" r="15" fill="#F1C48E"/><circle cx="158" cy="86" r="10.5" fill="#F5D2A4"/>
-              <path d="M18 152C58 122 98 142 130 130C162 118 200 134 222 124V214H18Z" fill="#CBD3C0"/>
-              <g fill="#8E9C84"><circle cx="112" cy="132" r="6"/><circle cx="120" cy="129" r="7.5"/><circle cx="196" cy="128" r="6.5"/></g>
-              <path d="M56 148L70 122L84 148Z" fill="#8C5A3C"/><path d="M64 148L70 136L76 148Z" fill="#F3C98B"/>
-              <path d="M18 172C60 150 110 170 150 156C180 146 206 158 222 150V214H18Z" fill="#A9B5A0"/>
-              <g fill="#7F8E76"><circle cx="34" cy="166" r="7"/><circle cx="44" cy="162" r="8.5"/><circle cx="206" cy="156" r="7.5"/></g>
-            </g>
-            <path d="M18 191H222V214H18Z" fill="#D8B892"/>
-            <path d="M18 196H222M18 202H222M70 191V214M130 191V214M186 191V214" stroke="#C39C72" stroke-width=".6"/>
-            <rect x="18" y="34" width="204" height="180" filter="url(#tpGrao)" opacity=".14"/>
-            <g class="tp-estrela" style="animation-delay:0s"><path d="M54 36V59" stroke="#B08A62" stroke-width=".4"/><path d="M54.0 59.0 L55.3 62.2 L58.8 62.5 L56.1 64.7 L56.9 68.0 L54.0 66.2 L51.1 68.0 L51.9 64.7 L49.2 62.5 L52.7 62.2Z" fill="#EDCB8E" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-estrela" style="animation-delay:-0.8s"><path d="M92 36V51" stroke="#B08A62" stroke-width=".4"/><path d="M92.0 51.0 L93.3 54.2 L96.8 54.5 L94.1 56.7 L94.9 60.0 L92.0 58.2 L89.1 60.0 L89.9 56.7 L87.2 54.5 L90.7 54.2Z" fill="#EDCB8E" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-estrela" style="animation-delay:-1.5s"><path d="M168 36V53" stroke="#B08A62" stroke-width=".4"/><path d="M168.0 53.0 L169.3 56.2 L172.8 56.5 L170.1 58.7 L170.9 62.0 L168.0 60.2 L165.1 62.0 L165.9 58.7 L163.2 56.5 L166.7 56.2Z" fill="#EDCB8E" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-estrela" style="animation-delay:-0.4s"><path d="M196 36V65" stroke="#B08A62" stroke-width=".4"/><path d="M196.0 65.0 L197.3 68.2 L200.8 68.5 L198.1 70.7 L198.9 74.0 L196.0 72.2 L193.1 74.0 L193.9 70.7 L191.2 68.5 L194.7 68.2Z" fill="#EDCB8E" stroke="#C9A060" stroke-width=".4"/></g>
-
-            <!-- Coração de papel que sobe numa vareta -->
-            <g transform="translate(120 61) scale(.85)">
-              <g class="tp-coracao">
-                <path d="M0 6V200" stroke="#8B6B4A" stroke-width="1.3"/>
-                <path d="M0 7C-10 -1 -13 -7 -9 -12C-6 -15 -2 -14 0 -10C2 -14 6 -15 9 -12C13 -7 10 -1 0 7Z" fill="#C9735A" stroke="#A9553F" stroke-width=".6" filter="url(#tpPapel)"/>
-                <circle cx="0" cy="-2" r="1" fill="#D6AF6E" stroke="#8E6B3E" stroke-width=".3"/>
-              </g>
-            </g>
-
-            <!-- Noiva, de perfil, voltada para a direita -->
-            <g class="tp-noiva-anda">
-              <g transform="translate(30 200)">
-                <g class="tp-balanca">
-                  <g class="tp-ponta">
-                    <path d="M-4 -30V70" stroke="#8B6B4A" stroke-width="1.6" stroke-linecap="round"/>
-                    <g filter="url(#tpPapel)">
-                      <path d="M-4 -119C-20 -110 -31 -70 -42 -6L-30 -6C-22 -58 -14 -100 -6 -112Z" fill="#FFFFFF" opacity=".82"/>
-                      <path d="M-6 -62C-14 -40 -30 -18 -44 0L26 0C18 -22 10 -44 6 -62Z" fill="url(#tpVestido)" stroke="#E3D2C0" stroke-width=".7"/>
-                      <path d="M-2 -58C-6 -40 -14 -20 -22 -1M3 -58C5 -40 8 -20 12 -1" stroke="#EADCCD" stroke-width=".7" fill="none"/>
-                      <path d="M-7 -86C-9 -76 -8 -68 -6 -62L6 -62C8 -70 9.5 -80 6.5 -88C2 -90.5 -4 -90 -7 -86Z" fill="#FFFFFF" stroke="#E3D2C0" stroke-width=".7"/>
-                      <path d="M-6.6 -66H6.4V-62.6H-6.6Z" fill="#F2D7B8"/>
-                      <path d="M-2 -95H3V-86H-2Z" fill="#F4CDAE"/>
-                      <g class="tp-cab-noiva">
-                        <path d="M-10 -104C-13 -117 -3 -123 4 -121C8 -120 10 -117 9 -113C5 -116 0 -117 -3 -114C-5 -110 -5 -104 -4 -98L-6 -82C-10 -76 -13 -70 -14 -64C-16 -78 -13 -92 -10 -104Z" fill="#4A3326"/>
-                        <path d="M-9 -105C-11 -116 -4 -121 3 -120C8 -119 10 -115 9.5 -111L12.8 -106.5L9.8 -105.4C10.6 -104.6 10.6 -103.8 9.8 -103.2C10.5 -102.5 10.4 -101.6 9.6 -101C9.6 -99 8.6 -97.4 6.5 -96.6C3 -96 0 -96.5 -3 -97.5C-6 -99 -8.5 -101.5 -9 -105Z" fill="#F4CDAE"/>
-                        <path d="M-9.5 -104C-12 -117 -3 -123 4 -121C8 -120 10.2 -117 9.4 -112.6C6 -115.6 1 -116.4 -2.4 -114C-4.6 -111 -5.4 -107 -5.6 -102Z" fill="#4A3326"/>
-                        <circle cx="-5" cy="-119" r="2" fill="#F2D7B8"/><circle cx="-0.5" cy="-121.3" r="2.1" fill="#FFFFFF" stroke="#E3D2C0" stroke-width=".4"/>
-                        <circle cx="4" cy="-120.6" r="1.9" fill="#E8A48E"/><ellipse cx="-2.8" cy="-121" rx="1.8" ry=".8" fill="#A9B5A0"/>
-                        <ellipse class="tp-olho-aberto" cx="5" cy="-109.8" rx=".9" ry="1.2" fill="#3A2A22"/>
-                        <path class="tp-olho-fechado" d="M3.7 -109.6q1.4 1.3 2.8 0" stroke="#3A2A22" stroke-width=".7" fill="none" stroke-linecap="round"/>
-                        <path d="M4 -112.6l2.6 -.4" stroke="#4A3326" stroke-width=".6" stroke-linecap="round"/>
-                        <circle cx="3.5" cy="-104.4" r="2.2" fill="#EF9E88" opacity=".5"/>
-                        <ellipse cx="10.2" cy="-102.3" rx="1" ry=".7" fill="#C9735A"/>
-                      </g>
-                      <g class="tp-braco-noiva">
-                        <path d="M0 -84C2 -76 4 -70 9 -67" stroke="#F4CDAE" stroke-width="3.4" stroke-linecap="round" fill="none"/>
-                        <g transform="translate(11 -66)">
-                          <ellipse cx="-4" cy="2" rx="3.6" ry="1.5" fill="#A9B5A0" transform="rotate(-30 -4 2)"/>
-                          <ellipse cx="4" cy="2" rx="3.6" ry="1.5" fill="#8E9C84" transform="rotate(30 4 2)"/>
-                          <circle cx="-2.4" cy="-1.4" r="2.8" fill="#E8A48E"/><circle cx="2.6" cy="-1.8" r="2.9" fill="#F2D7B8"/>
-                          <circle cx="0" cy="1.6" r="2.6" fill="#C9735A"/><circle cx=".2" cy="-4.2" r="2.1" fill="#FFFFFF"/>
-                        </g>
-                      </g>
-                    </g>
-                    <g transform="translate(30 70)"><path class="tp-vareta-noiva" d="M0 0V-135.5" stroke="#8B6B4A" stroke-width=".9" stroke-linecap="round"/></g>
-                    <circle cx="0" cy="-84" r="1.1" fill="#D6AF6E" stroke="#8E6B3E" stroke-width=".35"/>
-                    <circle cx="0" cy="-93" r="1.1" fill="#D6AF6E" stroke="#8E6B3E" stroke-width=".35"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-
-            <!-- Noivo, de perfil, voltado para a esquerda -->
-            <g class="tp-noivo-anda">
-              <g transform="translate(210 200) scale(-1 1)">
-                <g class="tp-balanca tp-balanca-noivo">
-                  <path d="M-3 -40V70" stroke="#8B6B4A" stroke-width="1.6" stroke-linecap="round"/>
-                  <g filter="url(#tpPapel)">
-                    <path d="M-6 -52L-7 -2H-1L1 -40L3 -2H9L7 -52Z" fill="#2F3542"/>
-                    <path d="M-8 -3H1.5C3.5 -3 4.5 -1.4 4.5 0H-8ZM2 -3H10.5C12.5 -3 13.5 -1.4 13.5 0H2Z" fill="#1E2028"/>
-                    <path d="M-8 -98C-10.5 -84 -10.5 -66 -9.5 -48L-11 -44H9L9.5 -50C10.5 -62 11 -84 8 -97C3 -100 -3 -100 -8 -98Z" fill="#3A4250"/>
-                    <path d="M5 -97.5L9 -96.5L6.5 -84Z" fill="#FFFFFF"/>
-                    <path d="M7.6 -97L10.4 -95.6L7.8 -94.2Z" fill="#1E2028"/>
-                    <path d="M4.5 -97L6.5 -84L3 -90Z" fill="#2B313D"/>
-                    <circle cx="6.5" cy="-87.5" r="1.9" fill="#E8A48E"/><ellipse cx="5.4" cy="-85.4" rx="1.6" ry=".7" fill="#A9B5A0"/>
-                    <circle cx="8.6" cy="-76" r=".7" fill="#1E2028"/><circle cx="8.8" cy="-68" r=".7" fill="#1E2028"/>
-                    <path d="M-2 -104.5H3V-96H-2Z" fill="#F4CDAE"/>
-                    <g class="tp-cab-noivo">
-                      <path d="M-10 -115C-12 -127 -4 -133 4 -132C9 -131 11 -126 10.5 -122L13.5 -117.5L10.6 -116.4C11.2 -115.6 11.2 -114.8 10.6 -114.2C11 -113.5 11 -112.6 10.4 -112C10.6 -109 9.6 -106.8 7.4 -105.8C3 -105 -1 -105.5 -4 -107C-7 -109 -9.5 -111.5 -10 -115Z" fill="#F4CDAE"/>
-                      <path d="M-11 -114C-13 -128 -4 -135 5 -133C10 -132 12.2 -128 11 -124.6C7 -127 2 -127.6 -1.6 -125.8C-3.6 -122 -4.6 -118 -5.6 -114Z" fill="#2E211A"/>
-                      <path d="M-5 -114.5C-5 -108.5 -1 -105.4 4 -105.2C7.6 -105.4 10.6 -108 10.7 -111.6C9.2 -110.6 7.2 -111 5.6 -112C3 -110.6 0 -111.6 -2.2 -113.6Z" fill="#3B2A20"/>
-                      <path d="M8 -113.8C9.4 -114.6 10.6 -114.4 11 -113.6" stroke="#3B2A20" stroke-width="1.2" stroke-linecap="round" fill="none"/>
-                      <ellipse cx="-3.2" cy="-118" rx="1.8" ry="2.6" fill="#EDBE9C"/>
-                      <ellipse class="tp-olho-aberto" cx="5.4" cy="-121" rx=".95" ry="1.25" fill="#2A1E18"/>
-                      <path class="tp-olho-fechado" d="M4 -120.8q1.4 1.3 2.8 0" stroke="#2A1E18" stroke-width=".7" fill="none" stroke-linecap="round"/>
-                      <path d="M3.6 -124l3.4 .2" stroke="#2E211A" stroke-width=".9" stroke-linecap="round"/>
-                      <circle cx="3.4" cy="-116.4" r="2" fill="#EF9E88" opacity=".35"/>
-                    </g>
-                    <g class="tp-braco-noivo">
-                      <path d="M0 -94C1 -84 2 -76 5 -70" stroke="#3A4250" stroke-width="5" stroke-linecap="round" fill="none"/>
-                      <circle cx="5.6" cy="-68.4" r="2.4" fill="#F4CDAE"/>
-                    </g>
-                  </g>
-                  <g transform="translate(24 70)"><path class="tp-vareta-noivo" d="M0 0V-138.2" stroke="#8B6B4A" stroke-width=".9" stroke-linecap="round"/></g>
-                  <circle cx="0" cy="-94" r="1.1" fill="#D6AF6E" stroke="#8E6B3E" stroke-width=".35"/>
-                  <circle cx="0" cy="-103" r="1.1" fill="#D6AF6E" stroke="#8E6B3E" stroke-width=".35"/>
-                </g>
-              </g>
-            </g>
-
-            <!-- Cortinas -->
-            <g clip-path="url(#tpAbertura)"><g filter="url(#tpPapel)">
-              <path class="tp-cortina-esq" d="M-60 36H124C119 90 121 150 127 214H-60Z" fill="url(#tpDobra)"/>
-              <path class="tp-cortina-dir" d="M116 36H300V214H113C119 150 121 90 116 36Z" fill="url(#tpDobra)"/>
-            </g></g>
-            <g filter="url(#tpPapel)">
-              <path d="M18 34H222V46H18Z" fill="#C9735A"/>
-              <g fill="#C9735A"><circle cx="24" cy="46" r="5.2"/><circle cx="36" cy="46" r="5.2"/><circle cx="48" cy="46" r="5.2"/><circle cx="60" cy="46" r="5.2"/><circle cx="72" cy="46" r="5.2"/><circle cx="84" cy="46" r="5.2"/><circle cx="96" cy="46" r="5.2"/><circle cx="108" cy="46" r="5.2"/><circle cx="120" cy="46" r="5.2"/><circle cx="132" cy="46" r="5.2"/><circle cx="144" cy="46" r="5.2"/><circle cx="156" cy="46" r="5.2"/><circle cx="168" cy="46" r="5.2"/><circle cx="180" cy="46" r="5.2"/><circle cx="192" cy="46" r="5.2"/><circle cx="204" cy="46" r="5.2"/><circle cx="216" cy="46" r="5.2"/></g>
-              <path d="M18 42H222" stroke="#D6AF6E" stroke-width="1.2" stroke-dasharray="2 2"/>
-            </g>
-
-            <!-- Moldura do teatro (proscênio) -->
-            <path fill-rule="evenodd" d="M2 12H238V258H2ZM22 206V76C22 52 60 40 120 38C180 40 218 52 218 76V206Z" fill="#F7E7D5" stroke="#B08A62" stroke-width=".9" filter="url(#tpPapel)"/>
-            <path d="M15 206V74C15 46 58 32 120 30C182 32 225 46 225 74V206" fill="none" stroke="#B08A62" stroke-width=".6" stroke-dasharray="1.6 1.6"/>
-            <path d="M2 206H238" stroke="#B08A62" stroke-width=".8"/>
-            <ellipse cx="120" cy="21" rx="22" ry="9.5" fill="#FBF1E6" stroke="#B08A62" stroke-width=".7"/>
-            <image href="assets/monograma.png" x="109" y="12.5" width="22" height="17"/>
-            <g class="tp-luz" style="animation-delay:0.00s"><circle cx="44" cy="209" r="7" fill="url(#tpBrilho)"/><path d="M40.6 211a3.4 3.4 0 0 1 6.8 0Z" fill="#FFE9B8" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-luz" style="animation-delay:-0.37s"><circle cx="70" cy="209" r="7" fill="url(#tpBrilho)"/><path d="M66.6 211a3.4 3.4 0 0 1 6.8 0Z" fill="#FFE9B8" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-luz" style="animation-delay:-0.74s"><circle cx="96" cy="209" r="7" fill="url(#tpBrilho)"/><path d="M92.6 211a3.4 3.4 0 0 1 6.8 0Z" fill="#FFE9B8" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-luz" style="animation-delay:-1.11s"><circle cx="122" cy="209" r="7" fill="url(#tpBrilho)"/><path d="M118.6 211a3.4 3.4 0 0 1 6.8 0Z" fill="#FFE9B8" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-luz" style="animation-delay:-1.48s"><circle cx="148" cy="209" r="7" fill="url(#tpBrilho)"/><path d="M144.6 211a3.4 3.4 0 0 1 6.8 0Z" fill="#FFE9B8" stroke="#C9A060" stroke-width=".4"/></g><g class="tp-luz" style="animation-delay:-1.85s"><circle cx="174" cy="209" r="7" fill="url(#tpBrilho)"/><path d="M170.6 211a3.4 3.4 0 0 1 6.8 0Z" fill="#FFE9B8" stroke="#C9A060" stroke-width=".4"/></g>
-            <path d="M8 226H232" stroke="#D6B48E" stroke-width=".6"/>
-            <text x="120" y="241" text-anchor="middle" font-family="Cinzel, serif" font-size="7.4" letter-spacing="2.2" fill="#9A7556">CAROLINA &amp; FERNANDO</text>
-          </svg>
-        </div>
-      </div>
 
       <!-- Brinde de espumante ao abrir -->
       <div class="brinde" aria-hidden="true">
@@ -253,6 +117,6 @@
     <p class="dica">Toque no selo para abrir</p>
   </main>
 
-  <script src="assets/main.js?v=2026-11-08-2"></script>
+  <script src="assets/main.js?v=2026-11-08-3"></script>
 </body>
 </html>
