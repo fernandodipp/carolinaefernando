@@ -46,7 +46,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg?v=2026-11-08-12") center / cover;
+  background: url("convite.jpg?v=2026-11-08-13") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel-envelope.webp?v=2026-11-08-12");
+    url("papel-envelope.webp?v=2026-11-08-13");
   background-size: 100% 100%, calc(var(--cw) * .34) calc(var(--cw) * .34);
   background-position: 0 0, 0 0;
 }
@@ -160,7 +160,7 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute; inset: 0;
   background:
     linear-gradient(180deg, rgba(150,108,80,.2), rgba(150,108,80,.06) 55%, rgba(255,246,236,.12)),
-    url("papel-envelope.webp?v=2026-11-08-12") 0 0 / calc(var(--cw) * .34) calc(var(--cw) * .34);
+    url("papel-envelope.webp?v=2026-11-08-13") 0 0 / calc(var(--cw) * .34) calc(var(--cw) * .34);
   opacity: 0; transition: opacity 0s .78s;
 }
 .abrindo .env-aba::after { opacity: 1; }
@@ -169,13 +169,13 @@ img { display: block; max-width: 100%; }
 /* Selo de cera verde-oliva */
 .selo {
   position: absolute; left: 50%; top: 46.5%; z-index: 5;
-  width: 37%; aspect-ratio: 1;
+  width: 37%; aspect-ratio: 440 / 435;
   transform: translate(-50%, -50%);
   border: 0; padding: 0; cursor: pointer;
   border-radius: 50%;
   /* selo de cera em relevo: aro alto de cera empurrada e marca do carimbo rebaixada */
-  background: url("selo.webp?v=2026-11-08-12") center / contain no-repeat;
-  filter: drop-shadow(0 1px 1px rgba(40,46,34,.45)) drop-shadow(0 4px 4px rgba(40,46,34,.28)) drop-shadow(0 12px 14px rgba(60,50,35,.22));
+  background: url("selo.webp?v=2026-11-08-13") center / contain no-repeat;
+  filter: drop-shadow(0 9px 10px rgba(40,46,34,.38)) drop-shadow(0 2px 2px rgba(40,46,34,.35));
   transition: transform .7s var(--mola), opacity .6s;
 }
 .selo:hover { transform: translate(-50%, -50%) scale(1.05) rotate(-3deg); }
@@ -237,7 +237,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp?v=2026-11-08-12") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-08-13") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
