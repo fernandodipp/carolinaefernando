@@ -74,7 +74,7 @@
     }
     for (var j = explosao.length - 1; j >= 0; j--) {
       var e = explosao[j];
-      e.x += e.vx; e.y += e.vy; e.vx *= .975; e.vy = e.vy * .975 + .015; e.vida -= e.queda;
+      e.x += e.vx; e.y += e.vy; e.vx *= .975; e.vy = e.vy * .975 + (e.g || .015); e.vida -= e.queda;
       if (e.vida <= 0) { explosao.splice(j, 1); continue; }
       if (e.estrela) desenharEstrela(e.x, e.y, e.r, e.vida, e.cor);
       else {
@@ -124,24 +124,68 @@
 
   /* ---------- Abertura do envelope ---------- */
   var aberto = false;
+  /* Gotas de espumante que respingam no brinde */
+  function respingar(x, y, total) {
+    for (var i = 0; i < total; i++) {
+      var ang = -Math.PI / 2 + (Math.random() - .5) * 2.2, v = 1.5 + Math.random() * 3.2;
+      explosao.push({
+        x: x + (Math.random() - .5) * 8, y: y,
+        vx: Math.cos(ang) * v, vy: Math.sin(ang) * v,
+        r: .9 + Math.random() * 1.9, g: .13,
+        vida: 1, queda: .012 + Math.random() * .01,
+        cor: Math.random() < .7 ? "236,198,120" : "255,244,214",
+        estrela: false
+      });
+    }
+  }
+
+  /* Tilintar de taças de cristal, sintetizado (sem arquivo de áudio) */
+  function tilintar(atraso) {
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    try {
+      var ac = new Ctx(), t0 = ac.currentTime + atraso;
+      var mestre = ac.createGain(); mestre.gain.value = .16; mestre.connect(ac.destination);
+      [[0, 1], [.085, .45]].forEach(function (toque) {
+        var t = t0 + toque[0];
+        [[2093, 1, 1.5], [3135, .55, 1.1], [4186, .4, .9], [5274, .25, .7], [6650, .15, .5]].forEach(function (p) {
+          var o = ac.createOscillator(), g = ac.createGain();
+          o.type = "sine"; o.frequency.value = p[0] * (1 + (Math.random() - .5) * .006);
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(p[1] * toque[1], t + .003);
+          g.gain.exponentialRampToValueAtTime(.0001, t + p[2]);
+          o.connect(g); g.connect(mestre);
+          o.start(t); o.stop(t + p[2] + .05);
+        });
+      });
+      setTimeout(function () { ac.close(); }, (atraso + 2) * 1000);
+    } catch (e) { /* sem som */ }
+  }
+
+  var TOQUE = 930; // momento em que as taças se encontram (ms)
   function abrir() {
     if (aberto) return;
     aberto = true;
-    var s = centro(selo);
-    estourar(s.x, s.y, 40, 2.2);
-    palco.classList.add("abrindo");
-    setTimeout(function () { palco.classList.add("puxando"); }, 1250);
+    tilintar(TOQUE / 1000);
+    palco.classList.add("brindando");
+    setTimeout(function () {
+      var s = centro(selo);
+      estourar(s.x, s.y - s.h * .1, 46, 2.4);
+      respingar(s.x, s.y - s.h * .15, 34);
+      palco.classList.add("abrindo");
+    }, TOQUE);
+    setTimeout(function () { palco.classList.add("puxando"); }, TOQUE + 1350);
     setTimeout(function () {
       cena.style.animation = "none";
       palco.classList.add("revelado");
-    }, 2450);
+    }, TOQUE + 2550);
     setTimeout(function () {
       palco.classList.add("pronto");
       var c = centro(convite);
       estourar(c.x, c.y, 90, 1.6, c.w, c.h);
       var link = document.querySelector(".link-destaque");
       if (link) link.focus({ preventScroll: true });
-    }, 3700);
+    }, TOQUE + 3800);
   }
 
   {
