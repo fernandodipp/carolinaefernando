@@ -46,7 +46,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg?v=2026-11-08-19") center / cover;
+  background: url("convite.jpg?v=2026-11-09-1") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel-envelope.webp?v=2026-11-08-19");
+    url("papel-envelope.webp?v=2026-11-09-1");
   background-size: 100% 100%, calc(var(--cw) * .2125) calc(var(--cw) * .2125);
   background-position: 0 0, 0 0;
 }
@@ -160,7 +160,7 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute; inset: 0;
   background:
     linear-gradient(180deg, rgba(150,108,80,.2), rgba(150,108,80,.06) 55%, rgba(255,246,236,.12)),
-    url("papel-envelope.webp?v=2026-11-08-19") 0 0 / calc(var(--cw) * .2125) calc(var(--cw) * .2125);
+    url("papel-envelope.webp?v=2026-11-09-1") 0 0 / calc(var(--cw) * .2125) calc(var(--cw) * .2125);
   opacity: 0; transition: opacity 0s .78s;
 }
 .abrindo .env-aba::after { opacity: 1; }
@@ -174,7 +174,7 @@ img { display: block; max-width: 100%; }
   border: 0; padding: 0; cursor: pointer;
   border-radius: 50%;
   /* selo de cera em relevo: aro alto de cera empurrada e marca do carimbo rebaixada */
-  background: url("selo.webp?v=2026-11-08-19") center / contain no-repeat;
+  background: url("selo.webp?v=2026-11-09-1") center / contain no-repeat;
   filter: drop-shadow(0 9px 10px rgba(40,46,34,.38)) drop-shadow(0 2px 2px rgba(40,46,34,.35));
   transition: transform .7s var(--mola), opacity .6s;
 }
@@ -237,7 +237,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp?v=2026-11-08-19") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-09-1") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
@@ -310,37 +310,55 @@ img { display: block; max-width: 100%; }
 .js .pronto .t-endereco.surge { transform: translateX(-50%); }
 .t-endereco:hover, .t-endereco:focus-visible { background-size: 100% 1px; outline: none; }
 
-/* Botões simples, todos iguais, com um brilho discreto que passa de tempos em tempos */
-.t-botoes { top: 63.6%; display: grid; gap: 2.6cqw; justify-items: center; }
+/* Ícones clicáveis, lado a lado, com legenda curta embaixo */
+.t-botoes {
+  top: 62.2%;
+  display: flex; justify-content: center; align-items: flex-start; gap: 5cqw;
+}
 .botao {
+  display: flex; flex-direction: column; align-items: center; gap: 1.8cqw;
+  width: 19cqw;
+  color: var(--cor-texto); text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.botao-icone {
   position: relative; overflow: hidden; isolation: isolate;
   display: grid; place-items: center;
-  width: 42cqw; height: 6.4cqw;
-  border-radius: 99px;
+  width: 12.5cqw; height: 12.5cqw; border-radius: 50%;
   background: var(--cor-botao); color: #fff;
-  font-family: var(--sans); font-weight: 500;
-  font-size: 9px; font-size: 2.45cqw; letter-spacing: .16em; text-transform: uppercase;
-  text-decoration: none; white-space: nowrap;
-  box-shadow: 0 1cqw 2.4cqw -1.2cqw rgba(122,90,65,.65);
+  box-shadow: 0 1.1cqw 2.4cqw -1.2cqw rgba(122,90,65,.7), inset 0 0 0 .5cqw rgba(255,255,255,.12);
   transition: transform .35s var(--mola), background .3s, box-shadow .3s;
 }
-.botao::after {
+.botao-icone svg {
+  width: 52%; height: 52%;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+}
+/* brilho discreto que passa de tempos em tempos */
+.botao-icone::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(110deg, transparent 32%, rgba(255,255,255,.42) 48%, rgba(255,246,230,.25) 54%, transparent 68%);
-  transform: translateX(-120%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 48%, rgba(255,246,230,.25) 55%, transparent 70%);
+  transform: translateX(-130%);
 }
-.js .pronto .botao::after { animation: brilhoBotao 5.5s ease-in-out 2.6s infinite; }
-.js .pronto .botao:nth-child(2)::after { animation-delay: 2.95s; }
-.js .pronto .botao:nth-child(3)::after { animation-delay: 3.3s; }
+.js .pronto .botao .botao-icone::after { animation: brilhoBotao 5.5s ease-in-out 2.6s infinite; }
+.js .pronto .botao:nth-child(2) .botao-icone::after { animation-delay: 2.95s; }
+.js .pronto .botao:nth-child(3) .botao-icone::after { animation-delay: 3.3s; }
 @keyframes brilhoBotao {
-  0% { transform: translateX(-120%); }
-  22%, 100% { transform: translateX(120%); }
+  0% { transform: translateX(-130%); }
+  22%, 100% { transform: translateX(130%); }
 }
-.botao:hover, .botao:focus-visible {
-  background: var(--cor-botao-escura); transform: translateY(-.5cqw); outline: none;
-  box-shadow: 0 1.6cqw 3cqw -1.2cqw rgba(122,90,65,.8);
+.botao-legenda {
+  font-family: var(--sans); font-weight: 500;
+  font-size: 7px; font-size: 2.05cqw; line-height: 1.45; letter-spacing: .14em; text-transform: uppercase;
+  text-align: center; padding-left: .14em;
+  transition: color .3s;
 }
-.botao:focus-visible { box-shadow: 0 0 0 .5cqw #fff, 0 0 0 1cqw var(--cor-botao-escura); }
+.botao:hover .botao-icone, .botao:focus-visible .botao-icone {
+  background: var(--cor-botao-escura); transform: translateY(-.6cqw) scale(1.04);
+  box-shadow: 0 1.8cqw 3cqw -1.2cqw rgba(122,90,65,.8), inset 0 0 0 .5cqw rgba(255,255,255,.12);
+}
+.botao:hover .botao-legenda, .botao:focus-visible .botao-legenda { color: var(--cor-botao-escura); }
+.botao:focus-visible { outline: none; }
+.botao:focus-visible .botao-icone { box-shadow: 0 0 0 .5cqw #fff, 0 0 0 1cqw var(--cor-botao-escura); }
 
 /* =========================================================
    Sem JavaScript ou com pouco movimento: convite já aberto
@@ -352,7 +370,7 @@ html:not(.js) .convite { transform: none; }
 /* Pouco movimento: a abertura do envelope continua (ela só acontece com o clique),
    mas os movimentos contínuos de fundo param. */
 @media (prefers-reduced-motion: reduce) {
-  .luzes span, .dica, .botao::after { animation: none !important; }
+  .luzes span, .dica, .botao-icone::after { animation: none !important; }
   .js .palco:not(.abrindo) .cena { animation: none; }
 }
 
