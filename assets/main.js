@@ -194,13 +194,15 @@
   var ehIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   var ehMac = /Macintosh/.test(ua) && !ehIOS;
   var ehAndroid = /Android/.test(ua);
-  var endereco = "Beco dos Feijós, 1140 - Jardim Viamar, Viamão - RS";
+  var local = "Casa De Campo Espaço De Eventos";
+  var endereco = "Beco dos Feijós, 1140 - Cocão, Viamão";
+  var lat = "-30.056664153724515", lng = "-51.04088640282145";   // coordenadas exatas do local
   var linkMapa = document.querySelector("[data-mapa]");
   if (linkMapa) {
     if (ehIOS || ehMac) {
-      linkMapa.href = "https://maps.apple.com/?q=" + encodeURIComponent(endereco);
+      linkMapa.href = "https://maps.apple.com/?ll=" + lat + "," + lng + "&q=" + encodeURIComponent(local);
     } else if (ehAndroid) {
-      linkMapa.href = "geo:0,0?q=" + encodeURIComponent(endereco);
+      linkMapa.href = "geo:" + lat + "," + lng + "?q=" + lat + "," + lng + "(" + encodeURIComponent(local) + ")";
       linkMapa.removeAttribute("target");
     }
   }
@@ -210,7 +212,7 @@
     linkAgenda.href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
       "&text=" + encodeURIComponent("Casamento de Carolina & Fernando") +
       "&dates=20270320T193000Z/20270321T023000Z" +
-      "&location=" + encodeURIComponent(endereco) +
+      "&location=" + encodeURIComponent(local + " - " + endereco) +
       "&details=" + encodeURIComponent("Cerimônia e festa. Confirme sua presença e veja a lista de presentes em https://www.carolinaefernando.com.br/");
     linkAgenda.target = "_blank"; linkAgenda.rel = "noopener";
   }

@@ -46,7 +46,7 @@ img { display: block; max-width: 100%; }
    ========================================================= */
 .fundo {
   position: fixed; inset: -12%;
-  background: url("convite.jpg?v=2026-11-09-3") center / cover;
+  background: url("convite.jpg?v=2026-11-09-5") center / cover;
   filter: blur(38px) saturate(1.15) brightness(.97);
   transform: scale(1.1);
 }
@@ -118,7 +118,7 @@ img { display: block; max-width: 100%; }
 .env-costas, .env-bolso, .env-aba {
   background-image:
     var(--tom),
-    url("papel-envelope.webp?v=2026-11-09-3");
+    url("papel-envelope.webp?v=2026-11-09-5");
   background-size: 100% 100%, calc(var(--cw) * .2125) calc(var(--cw) * .2125);
   background-position: 0 0, 0 0;
 }
@@ -160,7 +160,7 @@ img { display: block; max-width: 100%; }
   content: ""; position: absolute; inset: 0;
   background:
     linear-gradient(180deg, rgba(150,108,80,.2), rgba(150,108,80,.06) 55%, rgba(255,246,236,.12)),
-    url("papel-envelope.webp?v=2026-11-09-3") 0 0 / calc(var(--cw) * .2125) calc(var(--cw) * .2125);
+    url("papel-envelope.webp?v=2026-11-09-5") 0 0 / calc(var(--cw) * .2125) calc(var(--cw) * .2125);
   opacity: 0; transition: opacity 0s .78s;
 }
 .abrindo .env-aba::after { opacity: 1; }
@@ -174,7 +174,7 @@ img { display: block; max-width: 100%; }
   border: 0; padding: 0; cursor: pointer;
   border-radius: 50%;
   /* selo de cera em relevo: aro alto de cera empurrada e marca do carimbo rebaixada */
-  background: url("selo.webp?v=2026-11-09-3") center / contain no-repeat;
+  background: url("selo.webp?v=2026-11-09-5") center / contain no-repeat;
   filter: drop-shadow(0 9px 10px rgba(40,46,34,.38)) drop-shadow(0 2px 2px rgba(40,46,34,.35));
   transition: transform .7s var(--mola), opacity .6s;
 }
@@ -237,7 +237,7 @@ img { display: block; max-width: 100%; }
   position: absolute; inset: 0; z-index: 2;
   container-type: inline-size;
   border-radius: 4px; overflow: hidden;
-  background: var(--papel) url("convite.webp?v=2026-11-09-3") center / cover;
+  background: var(--papel) url("convite.webp?v=2026-11-09-5") center / cover;
   box-shadow: 0 2px 6px rgba(122,90,65,.12);
   transform: translateY(0) scale(.94);
   transition: transform 1.15s cubic-bezier(.5, 0, .2, 1), box-shadow 1s;
@@ -308,6 +308,11 @@ img { display: block; max-width: 100%; }
 }
 .js .t-endereco.surge { transform: translate(-50%, 12px); }
 .js .pronto .t-endereco.surge { transform: translateX(-50%); }
+/* Endereço em duas linhas: nome do local e endereço */
+.t-endereco { line-height: 1.6; }
+.t-endereco-texto { text-align: center; }
+.t-local { font-weight: 500; }
+
 /* Data e endereço clicáveis: ícone e sublinhado pontilhado deixam claro que são links */
 .t-acao {
   display: inline-flex; align-items: center; gap: .45em;
@@ -321,10 +326,15 @@ img { display: block; max-width: 100%; }
   fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
   transition: transform .4s var(--mola);
 }
+/* o ícone fica fora do bloco de texto, para o texto ficar exatamente no centro */
+.t-acao .t-acao-icone {
+  position: absolute; right: 100%; top: 50%;
+  margin-right: .5em; transform: translateY(-50%);
+}
+.t-acao:hover .t-acao-icone, .t-acao:focus-visible .t-acao-icone { transform: translateY(-62%) scale(1.12); }
 .t-acao:hover, .t-acao:focus-visible {
   text-decoration-style: solid; text-decoration-color: currentColor; outline: none;
 }
-.t-acao:hover .t-acao-icone, .t-acao:focus-visible .t-acao-icone { transform: translateY(-.12em) scale(1.12); }
 .t-acao:focus-visible { box-shadow: 0 0 0 .5cqw rgba(255,255,255,.8); border-radius: .3em; }
 
 /* Ícones clicáveis, lado a lado, com legenda curta embaixo */
