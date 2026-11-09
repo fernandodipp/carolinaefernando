@@ -196,16 +196,8 @@
   var ehAndroid = /Android/.test(ua);
   var local = "Casa De Campo Espaço De Eventos";
   var endereco = "Beco dos Feijós, 1140 - Cocão, Viamão";
-  var lat = "-30.056664153724515", lng = "-51.04088640282145";   // coordenadas exatas do local
-  var linkMapa = document.querySelector("[data-mapa]");
-  if (linkMapa) {
-    if (ehIOS || ehMac) {
-      linkMapa.href = "https://maps.apple.com/?ll=" + lat + "," + lng + "&q=" + encodeURIComponent(local);
-    } else if (ehAndroid) {
-      linkMapa.href = "geo:" + lat + "," + lng + "?q=" + lat + "," + lng + "(" + encodeURIComponent(local) + ")";
-      linkMapa.removeAttribute("target");
-    }
-  }
+  // O endereço abre sempre o link do Google Maps definido no HTML (sem desviar para o Apple Mapas).
+
   var linkAgenda = document.querySelector("[data-agenda]");
   if (linkAgenda && !ehIOS && !ehMac) {
     // Android e computador: Google Agenda com o evento preenchido (no Android, abre o app)
