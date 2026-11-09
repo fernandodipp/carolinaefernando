@@ -189,6 +189,32 @@
     });
   }
 
+  /* ---------- Endereço e data: abrem o app de mapas e a agenda do aparelho ---------- */
+  var ua = navigator.userAgent || "";
+  var ehIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var ehMac = /Macintosh/.test(ua) && !ehIOS;
+  var ehAndroid = /Android/.test(ua);
+  var endereco = "Beco dos Feijós, 1140 - Jardim Viamar, Viamão - RS";
+  var linkMapa = document.querySelector("[data-mapa]");
+  if (linkMapa) {
+    if (ehIOS || ehMac) {
+      linkMapa.href = "https://maps.apple.com/?q=" + encodeURIComponent(endereco);
+    } else if (ehAndroid) {
+      linkMapa.href = "geo:0,0?q=" + encodeURIComponent(endereco);
+      linkMapa.removeAttribute("target");
+    }
+  }
+  var linkAgenda = document.querySelector("[data-agenda]");
+  if (linkAgenda && !ehIOS && !ehMac) {
+    // Android e computador: Google Agenda com o evento preenchido (no Android, abre o app)
+    linkAgenda.href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      "&text=" + encodeURIComponent("Casamento de Carolina & Fernando") +
+      "&dates=20270320T193000Z/20270321T023000Z" +
+      "&location=" + encodeURIComponent(endereco) +
+      "&details=" + encodeURIComponent("Cerimônia e festa. Confirme sua presença e veja a lista de presentes em https://www.carolinaefernando.com.br/");
+    linkAgenda.target = "_blank"; linkAgenda.rel = "noopener";
+  }
+
   /* ---------- Inclinação 3D do convite com o mouse ---------- */
   if (ponteiroFino && !poucoMovimento) {
     convite.addEventListener("mousemove", function (e) {

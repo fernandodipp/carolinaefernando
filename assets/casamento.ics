@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Carolina e Fernando//Convite//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:casamento-carolina-fernando-20270320@carolinaefernando.com.br
+DTSTAMP:20261109T120000Z
+DTSTART:20270320T193000Z
+DTEND:20270321T023000Z
+SUMMARY:Casamento de Carolina & Fernando
+LOCATION:Beco dos Feijós\, 1140 - Jardim Viamar\, Viamão - RS
+DESCRIPTION:Cerimônia e festa. Confirme sua presença e veja a lista de pr
+ esentes em https://www.carolinaefernando.com.br/
+URL:https://www.carolinaefernando.com.br/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Amanhã é o casamento de Carolina & Fernando!
+TRIGGER:-P1D
+END:VALARM
+END:VEVENT
+END:VCALENDAR
